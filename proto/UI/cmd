@@ -1,0 +1,5 @@
+pyside6-rcc UI\Assets\resource.qrc -o resource_rc.py
+pyside6-uic UI\CreateAccount.ui -o UI\ui_CreateAccount.py
+pyside6-uic UI\Login.ui -o UI\ui_Login.py
+pyside6-uic UI\Home.ui -o UI\ui_Home.py
+pyside6-uic UI\Home_Registros.ui -o UI\ui_Home_Registros.py

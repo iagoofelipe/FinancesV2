@@ -24,10 +24,6 @@ class Ui_Login(object):
         if not Login.objectName():
             Login.setObjectName(u"Login")
         Login.resize(1100, 670)
-        font = QFont()
-        font.setFamilies([u"Calibri"])
-        font.setPointSize(11)
-        Login.setFont(font)
         self.horizontalLayout = QHBoxLayout(Login)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalSpacer = QSpacerItem(354, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
@@ -45,9 +41,9 @@ class Ui_Login(object):
 
         self.label = QLabel(self.widget_3)
         self.label.setObjectName(u"label")
-        font1 = QFont()
-        font1.setPointSize(40)
-        self.label.setFont(font1)
+        font = QFont()
+        font.setPointSize(40)
+        self.label.setFont(font)
         self.label.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout.addWidget(self.label)
@@ -59,6 +55,7 @@ class Ui_Login(object):
 
         self.lineSenha = QLineEdit(self.widget_3)
         self.lineSenha.setObjectName(u"lineSenha")
+        self.lineSenha.setEchoMode(QLineEdit.Password)
 
         self.verticalLayout.addWidget(self.lineSenha)
 
@@ -73,6 +70,7 @@ class Ui_Login(object):
 
         self.cbMnterConectado = QCheckBox(self.widget_2)
         self.cbMnterConectado.setObjectName(u"cbMnterConectado")
+        self.cbMnterConectado.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
         self.horizontalLayout_3.addWidget(self.cbMnterConectado)
 
@@ -112,9 +110,9 @@ class Ui_Login(object):
 
         self.btnCriar = QPushButton(self.widget)
         self.btnCriar.setObjectName(u"btnCriar")
-        font2 = QFont()
-        font2.setUnderline(True)
-        self.btnCriar.setFont(font2)
+        font1 = QFont()
+        font1.setUnderline(True)
+        self.btnCriar.setFont(font1)
         self.btnCriar.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.btnCriar.setStyleSheet(u"padding: 0; background-color: transparent;")
         self.btnCriar.setFlat(True)

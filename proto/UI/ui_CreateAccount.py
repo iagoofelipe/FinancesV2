@@ -55,6 +55,7 @@ class Ui_CreateAccount(object):
         self.widget_4 = QWidget(self.widget_3)
         self.widget_4.setObjectName(u"widget_4")
         self.horizontalLayout_4 = QHBoxLayout(self.widget_4)
+        self.horizontalLayout_4.setSpacing(15)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.linePrimeiroNome = QLineEdit(self.widget_4)

@@ -10,12 +10,6 @@
     <height>670</height>
    </rect>
   </property>
-  <property name="font">
-   <font>
-    <family>Calibri</family>
-    <pointsize>11</pointsize>
-   </font>
-  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -76,6 +70,9 @@
       </item>
       <item>
        <widget class="QLineEdit" name="lineSenha">
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
         <property name="placeholderText">
          <string>senha</string>
         </property>
@@ -105,6 +102,9 @@
          </item>
          <item>
           <widget class="QCheckBox" name="cbMnterConectado">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>manter conectado</string>
            </property>

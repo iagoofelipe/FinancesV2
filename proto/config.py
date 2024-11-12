@@ -1,3 +1,5 @@
+from PySide6.QtGui import QFont
+
 WINDOW_WIDTH = 1100
 WINDOW_HEIGHT = 670
 
@@ -7,6 +9,7 @@ style_settings = {
     'border-radius': 5,
     'fill-background': '#1D1D1D',
     'fill-primary': '#292929',
+    'fill-primary-highlight': '#3E3E3E',
     'fill-secondary': '#3E3E3E',
     'fill-text-primary': '#FFFFFF',
     'fill-text-secondary': '#B7B7B7',
@@ -16,30 +19,28 @@ style_settings = {
     'fill-pendente': '#C6C148',
     'fill-atrasado': '#BC604A',
     'fill-line': '#5A5A5A',
+    'box': ' border: none; border-radius: %(border-radius)s; padding: 10; background-color: %(fill-primary)s; ',
+    'box-secondary': ' %(box)s background-color: %(fill-secondary)s; ',
+    'button': ' %(box)s background-color: %(fill-button)s; ',
+    'button-hover': ' background-color: %(fill-button-highlight)s; ',
 }
 
-style_widget = """
+def parserStyle(style:str) -> str:
+    while '%(' in style:
+        style = style % style_settings
+    
+    return style
 
-QLineEdit, QPushButton {
-    border: none;
-    border-radius: %(border-radius)s;
-    padding: 10;
+style_global = parserStyle("""
+
+QLineEdit, QComboBox, QDoubleSpinBox { %(box-secondary)s }
+
+QLineEdit::hover, QLineEdit::focus {
+    background-color: %(fill-primary-highlight)s;
 }
 
-QLineEdit {
-    background-color: %(fill-primary)s;
-}
+""")
 
-QPushButton {
-    background-color: %(fill-button)s;
-}
-
-QPushButton::hover {
-    background-color: %(fill-button-highlight)s;
-}
-
-#Login {
-    background-color: %(fill-background)s;
-}
-
-""" % style_settings
+font = QFont()
+font.setFamilies([u"Calibri"])
+font.setPointSize(12)

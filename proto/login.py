@@ -4,31 +4,45 @@ from UI.ui_CreateAccount import Ui_CreateAccount
 
 from config import *
 
-def setupUi(ui, window):
+style = parserStyle(style_global + """
+
+QPushButton { %(button)s }
+
+QPushButton::hover { %(button-hover)s }
+
+#Login {
+    background-color: %(fill-background)s;
+}
+
+""")
+
+def setupCreate(window:QMainWindow):
     wid = QWidget(window)
+    ui = Ui_CreateAccount()
     ui.setupUi(wid)
     window.setCentralWidget(wid)
 
-    # configurando style
-    wid.setStyleSheet(style_widget)
+    wid.setStyleSheet(style)
+    ui.btnAcessar.clicked.connect(lambda: setupLogin(window))
+
+
+def setupLogin(window:QMainWindow):
+    wid = QWidget(window)
+    ui = Ui_Login()
+    ui.setupUi(wid)
+    window.setCentralWidget(wid)
+
+    wid.setStyleSheet(style)
+    ui.btnCriar.clicked.connect(lambda: setupCreate(window))
 
 if __name__ == '__main__':
     app = QApplication()
     window = QMainWindow()
-    wid = QWidget()
-    ui_login = Ui_Login()
-    ui_CreateAccount = Ui_CreateAccount()
+    window.setFont(font)
 
     # configurando components
-    ui_login.setupUi(wid)
     window.setMinimumSize(WINDOW_WIDTH, WINDOW_HEIGHT)
-    window.setCentralWidget(wid)
-
-    # confingurando slots
-    ui_login.btnCriar.clicked.connect(lambda: setupUi(ui_CreateAccount, window))
-
-    # configurando style
-    wid.setStyleSheet(style_widget)
+    setupLogin(window)
 
     window.show()
     app.exec()

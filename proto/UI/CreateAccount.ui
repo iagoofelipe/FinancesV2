@@ -70,6 +70,9 @@
       <item>
        <widget class="QWidget" name="widget_4" native="true">
         <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <property name="spacing">
+          <number>15</number>
+         </property>
          <property name="leftMargin">
           <number>0</number>
          </property>
