@@ -1,0 +1,16 @@
+<RCC>
+  <qresource prefix="root">
+    <file>icons/Trash 2.png</file>
+    <file>icons/Calendar.png</file>
+    <file>icons/Clipboard.png</file>
+    <file>icons/Credit card.png</file>
+    <file>icons/Log out.png</file>
+    <file>icons/Repeat.png</file>
+    <file>icons/Settings.png</file>
+    <file>icons/Trello.png</file>
+    <file>icons/User.png</file>
+    <file>icons/User-topbar.png</file>
+    <file>icons/Info.png</file>
+    <file>icons/Edit 2.png</file>
+  </qresource>
+</RCC>

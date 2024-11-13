@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QDoubleSpinBox, QFrame,
     QGridLayout, QHBoxLayout, QLabel, QLineEdit,
     QPushButton, QScrollArea, QSizePolicy, QSpacerItem,
     QVBoxLayout, QWidget)
-import resource_rc
+from . import resource_rc
 
 class Ui_Registros(object):
     def setupUi(self, Registros):
