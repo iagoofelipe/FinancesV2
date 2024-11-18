@@ -1,21 +1,24 @@
-import asyncio
 from PySide6.QtWidgets import QApplication
-import PySide6.QtAsyncio as QtAsyncio
+from PySide6.QtGui import QPalette, QColor
 
-from .views import MainView
-from .controllers import MainController
-from .models import MainModel
+from .views._appview import AppView
+from .backend._appevents import AppEventHandler
+from .backend._appmodel import AppModel
+from .backend._appcontroller import AppController
+from .UI.style import style_settings
 
-class FinancesApp:
-    @property
-    def qapp(self) -> QApplication:
-        return self.__app
-    
+__all__ = ['FinancesApp']
+
+class FinancesApp(QApplication):
     def __init__(self):
-        self.__app = QApplication()
-        self.__model = MainModel()
-        self.__view = MainView(self.__model)
-        self.__controller = MainController(self.__model, self.__view)
+        super().__init__()
+        self.__events = AppEventHandler()
+        self.__model = AppModel(self.__events)
+        self.__view = AppView(self.__events, self.__model)
+        self.__controller = AppController(self.__events, self.__model, self.__view)
 
-    def exec(self):
-        QtAsyncio.run(self.__controller.initialize(), handle_sigint=True)
+        self.setPalette(QPalette(QColor(style_settings['fill-background']))) # dark theme
+
+    def exec(self) -> int:
+        self.__controller.initialize()
+        return QApplication.exec()
