@@ -140,6 +140,7 @@ class Ui_Home(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.widTopbar.sizePolicy().hasHeightForWidth())
         self.widTopbar.setSizePolicy(sizePolicy1)
+        self.widTopbar.setStyleSheet(u"")
         self.horizontalLayout_2 = QHBoxLayout(self.widTopbar)
         self.horizontalLayout_2.setSpacing(5)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")

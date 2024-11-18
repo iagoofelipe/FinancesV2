@@ -40,7 +40,7 @@ class Ui_Registros(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, -279, 911, 858))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 928, 579))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setSpacing(10)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -93,7 +93,7 @@ class Ui_Registros(object):
 
         self.widget_5 = QWidget(self.widDetalhamento)
         self.widget_5.setObjectName(u"widget_5")
-        self.widget_5.setMinimumSize(QSize(0, 500))
+        self.widget_5.setMinimumSize(QSize(0, 200))
 
         self.verticalLayout_4.addWidget(self.widget_5)
 

@@ -18,7 +18,8 @@ style_settings = {
     'fill-line': '#5A5A5A',
     'box': ' border: none; border-radius: %(border-radius)s; padding: 10; background-color: %(fill-primary)s; ',
     'box-secondary': ' %(box)s background-color: %(fill-secondary)s; ',
-    'button': ' %(box)s background-color: %(fill-button)s; ',
+    'button': ' %(box)s background-color: %(fill-button)s; padding: 5 10; ',
+    'button-icon': ' padding: 0; ',
     'button-hover': ' background-color: %(fill-button-highlight)s; ',
 }
 
@@ -29,9 +30,10 @@ def parserStyle(style:str) -> str:
     return style
 
 style_global = parserStyle("""
+
 QLineEdit, QComboBox, QDoubleSpinBox { %(box-secondary)s }
 
-QLineEdit::hover, QLineEdit::focus {
-    background-color: %(fill-secondary-highlight)s;
-}
+QLineEdit::hover, QLineEdit::focus { background-color: %(fill-secondary-highlight)s; }
+
+QPushButton { %(button-icon)s }
 """)

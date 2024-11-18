@@ -1,4 +1,5 @@
 import os
+import sys
 from PySide6.QtGui import QFont
 
 __id = -1
@@ -25,11 +26,11 @@ DEFAULT_SETTINGS = {
 WINDOW_WIDTH = 1100
 WINDOW_HEIGHT = 670
 FONT = QFont()
-FONT.setFamilies([u"Calibri"])
+FONT.setFamilies([u".AppleSystemUIFont"] if sys.platform == 'darwin' else [u"Calibri"])
 FONT.setPointSize(12)
 
 # Server
-SERVER_IP = 'http://192.168.19:443'
+SERVER_IP = 'http://192.168.1.19:443'
 
 # Path
 PATH_TEMP = os.path.join(os.environ.get('TEMP', '.temp'), f'Finances_{VERSION}')
