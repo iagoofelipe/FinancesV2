@@ -18,6 +18,8 @@ class AppModel(QObject):
         self.__client = ClientServer()
         self.__userCredentials = {}
         self.__saveCredentials = None # definido em initialize
+        self.__userId = -1
+        self.__userData = {}
 
         self.__threads = Queue()
         Thread(target=queueWorker, args=(self.__threads, ), daemon=True).start()
@@ -25,6 +27,7 @@ class AppModel(QObject):
         # slots
         self.__events.loginRequired.connect(self.on_loginRequired)
         self.__events.loginFinished.connect(self.on_loginFinished)
+        self.__events.userDataUpdated.connect(self.on_userDataUpdated)
 
     def initialize(self):
         self.__threads.put((self.__initialize, [], dict(signal_done=self.initializationFinished, signal_with_result=True)))
@@ -83,7 +86,18 @@ class AppModel(QObject):
         ))
 
     def on_loginFinished(self, result:dict):
-        self.saveCredentials(result['success'] and self.remember())
+        if result['success']:
+            self.saveCredentials(self.remember())
+            self.__userId = result['userId']
+
+            self.__threads.put((
+                self.__client.getUserData,
+                [self.__userId],
+                dict(signal_done=self.__events.userDataUpdated, signal_with_result=True)
+            ))
         
+    def on_userDataUpdated(self, data:dict):
+        self.__userData = data
+
     def on_quitRequired(self):
         self.__threads.join()
