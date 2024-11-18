@@ -158,19 +158,19 @@ class Ui_Home(object):
         self.verticalLayout_2.setSpacing(5)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.label_6 = QLabel(self.widget)
-        self.label_6.setObjectName(u"label_6")
+        self.lbUser = QLabel(self.widget)
+        self.lbUser.setObjectName(u"lbUser")
         font = QFont()
         font.setPointSize(14)
         font.setBold(True)
-        self.label_6.setFont(font)
+        self.lbUser.setFont(font)
 
-        self.verticalLayout_2.addWidget(self.label_6)
+        self.verticalLayout_2.addWidget(self.lbUser)
 
-        self.label_8 = QLabel(self.widget)
-        self.label_8.setObjectName(u"label_8")
+        self.lbProfileDateRange = QLabel(self.widget)
+        self.lbProfileDateRange.setObjectName(u"lbProfileDateRange")
 
-        self.verticalLayout_2.addWidget(self.label_8)
+        self.verticalLayout_2.addWidget(self.lbProfileDateRange)
 
 
         self.horizontalLayout_2.addWidget(self.widget)
@@ -243,8 +243,8 @@ class Ui_Home(object):
         self.pushButton_5.setText("")
         self.label_5.setText(QCoreApplication.translate("Home", u"configura\u00e7\u00f5es", None))
         self.label_7.setText("")
-        self.label_6.setText(QCoreApplication.translate("Home", u"<USER>", None))
-        self.label_8.setText(QCoreApplication.translate("Home", u"<profile>, <dateRange>", None))
+        self.lbUser.setText(QCoreApplication.translate("Home", u"<USER>", None))
+        self.lbProfileDateRange.setText(QCoreApplication.translate("Home", u"<profile>, <dateRange>", None))
         self.pushButton_6.setText("")
         self.pushButton_7.setText("")
         self.pushButton_8.setText("")

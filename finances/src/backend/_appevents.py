@@ -6,6 +6,7 @@ class AppEventHandler(QObject):
     loginFinished = Signal(dict)
     quitRequired = Signal()
     loadingMessageChanged = Signal(str)
+    userDataUpdated = Signal(dict)
 
     def __init__(self):
         super().__init__()

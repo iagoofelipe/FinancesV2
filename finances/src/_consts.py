@@ -1,13 +1,19 @@
 import os
 from PySide6.QtGui import QFont
 
+__id = -1
+def generateId() -> int:
+    global __id
+    __id += 1
+    return __id
+
 __all__ = [
     'VERSION', 'DEFAULT_SETTINGS', 'WINDOW_WIDTH', 'WINDOW_HEIGHT', 'FONT',
     'SERVER_IP',
     'PATH_TEMP',
     'FILE_SETTINGS',
-    'WID_ID_LOADING', 'WID_ID_LOGIN', 'WID_ID_CREATE_ACCOUNT', 'WID_ID_HOME',
-    'LOADING_MESSAGE'
+    'WID_ID_LOADING', 'WID_ID_LOGIN', 'WID_ID_CREATE_ACCOUNT', 'WID_ID_HOME', 'LOADING_MESSAGE',
+    'COMPONENT_HOME_DASHBOARD', 'COMPONENT_HOME_REGISTRY', 'COMPONENT_HOME_CARD', 'COMPONENTS_HOME',
 ]
 
 # Others
@@ -32,9 +38,14 @@ PATH_TEMP = os.path.join(os.environ.get('TEMP', '.temp'), f'Finances_{VERSION}')
 FILE_SETTINGS = os.path.join(PATH_TEMP, 'settings.ini')
 
 # UIs
-WID_ID_LOADING = 0
-WID_ID_LOGIN = 1
-WID_ID_CREATE_ACCOUNT = 2
-WID_ID_HOME = 3
+WID_ID_LOADING = generateId()
+WID_ID_LOGIN = generateId()
+WID_ID_CREATE_ACCOUNT = generateId()
+WID_ID_HOME = generateId()
 
 LOADING_MESSAGE = 'carregando componentes...'
+
+COMPONENT_HOME_DASHBOARD = generateId()
+COMPONENT_HOME_REGISTRY = generateId()
+COMPONENT_HOME_CARD = generateId()
+COMPONENTS_HOME = [COMPONENT_HOME_DASHBOARD, COMPONENT_HOME_REGISTRY, COMPONENT_HOME_CARD]

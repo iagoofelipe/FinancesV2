@@ -33,7 +33,7 @@ class ClientServer:
     def login(self, username:str, password:str) -> dict:
         result = {'success': False, 'error': ''}
 
-        if not self.__connected:
+        if not self.isConnected():
             result['error'] = 'server not connected'
             return result
         
@@ -42,5 +42,12 @@ class ClientServer:
             'password': password,
         }
         
-        response = self.__session.post('http://127.0.0.1:8000/auth/login', credentials, headers={'X-CSRFToken': self.__token})
+        response = self.__session.post(SERVER_IP+'/auth/login', credentials, headers={'X-CSRFToken': self.__token})
+        return response.json()
+    
+    def getUserData(self, userId:int) -> dict | None:
+        if not self.isConnected():
+            return
+        
+        response = self.__session.get(SERVER_IP+'/data/user', params={'userId': userId})
         return response.json()
