@@ -1,34 +1,29 @@
-from PySide6.QtCore import QObject
-from PySide6.QtWidgets import QMainWindow, QWidget
+from PySide6.QtWidgets import QMainWindow
 
 from ..UI.generated.ui_Login import Ui_Login
-from ..UI.style import style_global, parserStyle
+from .._consts import WID_ID_LOGIN
+from ..UI.style import parserStyle
 from ..backend._appevents import AppEventHandler
 from ..backend._appmodel import AppModel
+from ._abstract import AbstractView
 
-style = parserStyle(style_global + """
-
+style = parserStyle("""
 QPushButton { %(button)s }
-
 QPushButton::hover { %(button-hover)s }
-
 """)
 
 
-class ViewLogin(QObject):
+class ViewLogin(AbstractView):
+    _id = WID_ID_LOGIN
+    _style = style
+    
     def __init__(self, window:QMainWindow, events:AppEventHandler, model:AppModel):
-        super().__init__()
-        self.__win = window
-        self.__events = events
-        self.__model = model
-        
-    def setup(self):
-        self.__ui = Ui_Login()
-        self.__wid = QWidget(self.__win)
+        super().__init__(window, events, model)
 
-        self.__ui.setupUi(self.__wid)
-        self.__win.setCentralWidget(self.__wid)
-        self.__wid.setStyleSheet(style)
+    def setup(self):
+        super().setup()
+        self.__ui = Ui_Login()
+        self.__ui.setupUi(self._wid)
 
         # signals && slots
         self.__ui.btnAcessar.clicked.connect(self.on_btnAcessar_clicked)
@@ -41,5 +36,5 @@ class ViewLogin(QObject):
             # TODO: solicitar preenchimento de todos os campos
             return
         
-        self.__model.setRemember(self.__ui.cbMnterConectado.isChecked())
-        self.__events.loginRequired.emit({'username': username, 'password': password})
+        self._model.setRemember(self.__ui.cbMnterConectado.isChecked())
+        self._events.loginRequired.emit({'username': username, 'password': password})

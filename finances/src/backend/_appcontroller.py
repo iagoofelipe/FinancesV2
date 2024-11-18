@@ -3,6 +3,7 @@ from PySide6.QtCore import QObject, Signal
 from ._appevents import AppEventHandler
 from ._appmodel import AppModel
 from ..views._appview import AppView
+from .._consts import WID_ID_LOGIN, WID_ID_HOME
 
 class AppController(QObject):
     def __init__(self, events:AppEventHandler, model:AppModel, view:AppView):
@@ -31,17 +32,17 @@ class AppController(QObject):
             self.__events.loginRequired.emit(self.__model.savedCredentials())
             return
         
-        self.__view.setup('Login')
+        self.__view.setup(WID_ID_LOGIN)
 
     def on_loginFinished(self, result:dict):
         success = result['success']
         msg = result['error'] if not success else 'login finished'
 
         # alterando UI, caso necessário
-        if not self.__view.checkCurrentUiByName('Login') and not success:
-            self.__view.setup('Login')
+        if not self.__view.checkCurrentUiById(WID_ID_LOGIN) and not success:
+            self.__view.setup(WID_ID_LOGIN)
 
         self.__view.showMessage(msg)
 
         if success:
-            self.__view.setup('Home')
+            self.__view.setup(WID_ID_HOME)

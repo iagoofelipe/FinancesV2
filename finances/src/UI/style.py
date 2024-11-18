@@ -1,7 +1,4 @@
-from PySide6.QtGui import QFont
-
-WINDOW_WIDTH = 1100
-WINDOW_HEIGHT = 670
+from .._consts  import WINDOW_HEIGHT, WINDOW_WIDTH
 
 style_settings = {
     'page-width': WINDOW_WIDTH,
@@ -32,15 +29,9 @@ def parserStyle(style:str) -> str:
     return style
 
 style_global = parserStyle("""
-
 QLineEdit, QComboBox, QDoubleSpinBox { %(box-secondary)s }
 
 QLineEdit::hover, QLineEdit::focus {
     background-color: %(fill-secondary-highlight)s;
 }
-
 """)
-
-font = QFont()
-font.setFamilies([u"Calibri"])
-font.setPointSize(12)
