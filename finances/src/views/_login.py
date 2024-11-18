@@ -41,4 +41,5 @@ class ViewLogin(QObject):
             # TODO: solicitar preenchimento de todos os campos
             return
         
+        self.__model.setRemember(self.__ui.cbMnterConectado.isChecked())
         self.__events.loginRequired.emit({'username': username, 'password': password})

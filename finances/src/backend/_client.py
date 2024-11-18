@@ -8,24 +8,24 @@ class ClientServer:
         self.__token:str = None
         self.__connected = False
 
-    def connect(self) -> tuple[bool, str]:
+    def connect(self) -> dict:
         self.__token = None
         self.__connected = False
 
         try:
-            response = self.__session.get(SERVER_IP+'/auth/')
+            response = self.__session.get(SERVER_IP+'/auth/token')
         except requests.exceptions.ConnectionError:
-            return (False, "couldn't connect with the server, ConnectionError")
+            return {'success': False, 'error': "couldn't connect with the server, ConnectionError"}
         
         if response.status_code != 200:
-            return (False, "couldn't connect with the server, ServerError")
+            return {'success': False, 'error': "couldn't connect with the server, ServerError"}
 
         self.__token = response.cookies.get('csrftoken')
         if not self.__token:
-            return (False, "couldn't get the token")
+            return {'success': False, 'error': "couldn't get the token"}
 
         self.__connected = True
-        return (True, "")
+        return {'success': True, 'error': ""}
     
     def isConnected(self) -> bool:
         return self.__connected
@@ -42,5 +42,5 @@ class ClientServer:
             'password': password,
         }
         
-        response = self.__session.post('http://127.0.0.1:8000/auth/', credentials, headers={'X-CSRFToken': self.__token})
+        response = self.__session.post('http://127.0.0.1:8000/auth/login', credentials, headers={'X-CSRFToken': self.__token})
         return response.json()

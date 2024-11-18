@@ -2,25 +2,26 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest, HttpRequest
 import json
 
-from .models import User
+from .models import User, Auth
 
-def index(request:HttpRequest):
+def token(request:HttpRequest):
+    if request.method != 'GET':
+        return HttpResponseBadRequest()
+    
+    return render(request, 'login.html')
 
-    match request.method:
-        case 'GET':
-            return render(request, 'login.html')
-        case 'POST':
-            pass
-        case _:
-            return HttpResponseBadRequest()
-
+def login(request:HttpRequest):
+    if request.method != 'POST':
+        return HttpResponseBadRequest()
+    
     username = request.POST.get('username')
     password = request.POST.get('password')
 
     if not username or not password:
         return HttpResponse(json.dumps({'success': False, 'error': 'missing data'}))
     
-    if username != 'iago' or password != '1234':
+    auth = Auth.objects.filter(username=username, password=password).first()
+    if auth is None:
         return HttpResponse(json.dumps({'success': False, 'error': 'invalid credentials'}))
 
     return HttpResponse(json.dumps({'success': True, 'error': ''}))

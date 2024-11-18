@@ -25,6 +25,12 @@ class AppController(QObject):
             self.__view.setLoadingMessage(f'Error: {result['error']}')
             return 
         
+        # verificando se o login deve ser feito
+        if self.__model.remember():
+            self.__view.setLoadingMessage('checking credentials...')
+            self.__events.loginRequired.emit(self.__model.savedCredentials())
+            return
+        
         self.__view.setup('Login')
 
     def on_loginFinished(self, result:dict):
