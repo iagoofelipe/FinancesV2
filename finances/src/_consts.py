@@ -23,10 +23,10 @@ FONT.setFamilies([u"Calibri"])
 FONT.setPointSize(12)
 
 # Server
-SERVER_IP = 'http://127.0.0.1:8000'
+SERVER_IP = 'http://192.168.19:443'
 
 # Path
-PATH_TEMP = os.path.join(os.environ.get('TEMP', '.'), f'Finances_{VERSION}')
+PATH_TEMP = os.path.join(os.environ.get('TEMP', '.temp'), f'Finances_{VERSION}')
 
 # Files
 FILE_SETTINGS = os.path.join(PATH_TEMP, 'settings.ini')
