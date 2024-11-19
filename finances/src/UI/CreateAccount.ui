@@ -88,14 +88,14 @@
          <item>
           <widget class="QLineEdit" name="linePrimeiroNome">
            <property name="placeholderText">
-            <string>Primeiro Nome</string>
+            <string>Primeiro Nome*</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QLineEdit" name="lineUltimoNome">
            <property name="placeholderText">
-            <string>Último Nome</string>
+            <string>Último Nome*</string>
            </property>
           </widget>
          </item>
@@ -103,16 +103,30 @@
        </widget>
       </item>
       <item>
+       <widget class="QLineEdit" name="lineUsuario">
+        <property name="placeholderText">
+         <string>Usuário*</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEmail">
+        <property name="placeholderText">
+         <string>E-mail*</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLineEdit" name="lineSenha">
         <property name="placeholderText">
-         <string>Senha</string>
+         <string>Senha*</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLineEdit" name="lineSenhaRepetir">
         <property name="placeholderText">
-         <string>digite sua senha novamente</string>
+         <string>digite sua senha novamente*</string>
         </property>
        </widget>
       </item>
@@ -204,7 +218,7 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>171</height>
+          <height>40</height>
          </size>
         </property>
        </spacer>
@@ -230,6 +244,8 @@
  <tabstops>
   <tabstop>linePrimeiroNome</tabstop>
   <tabstop>lineUltimoNome</tabstop>
+  <tabstop>lineUsuario</tabstop>
+  <tabstop>lineEmail</tabstop>
   <tabstop>lineSenha</tabstop>
   <tabstop>lineSenhaRepetir</tabstop>
   <tabstop>btnCriar</tabstop>

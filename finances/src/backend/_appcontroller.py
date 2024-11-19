@@ -14,6 +14,7 @@ class AppController(QObject):
 
         self.__model.initializationFinished.connect(self.on_initializationFinished)
         self.__events.loginFinished.connect(self.on_loginFinished)
+        self.__events.createAccountFinished.connect(self.on_createAccountFinished)
 
     def initialize(self):
         self.__view.initialize()
@@ -42,7 +43,15 @@ class AppController(QObject):
         if not self.__view.checkCurrentUiById(WID_ID_LOGIN) and not success:
             self.__view.setup(WID_ID_LOGIN)
 
-        self.__view.showMessage(msg)
+        self.__events.showPopup.emit(msg)
 
         if success:
             self.__view.setup(WID_ID_HOME)
+
+    def on_createAccountFinished(self, result:dict):
+        success = result['success']
+        msg = result['error'] if not success else 'account created'
+        self.__events.showPopup.emit(msg)
+
+        if success:
+            self.__view.setup(WID_ID_LOGIN)

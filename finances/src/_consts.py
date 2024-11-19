@@ -9,11 +9,11 @@ def generateId() -> int:
     return __id
 
 __all__ = [
-    'VERSION', 'DEFAULT_SETTINGS', 'WINDOW_WIDTH', 'WINDOW_HEIGHT', 'FONT',
+    'VERSION', 'DEFAULT_SETTINGS', 'WINDOW_WIDTH', 'WINDOW_HEIGHT', 'WINDOW_TITLE', 'FONT',
     'SERVER_IP',
     'PATH_TEMP',
     'FILE_SETTINGS',
-    'WID_ID_LOADING', 'WID_ID_LOGIN', 'WID_ID_CREATE_ACCOUNT', 'WID_ID_HOME', 'LOADING_MESSAGE',
+    'WID_ID_LOADING', 'WID_ID_LOGIN', 'WID_ID_CREATE_ACCOUNT', 'WID_ID_HOME', 'USER_DEFAULT_DATA', 'LOADING_MESSAGE',
     'COMPONENT_HOME_DASHBOARD', 'COMPONENT_HOME_REGISTRY', 'COMPONENT_HOME_CARD', 'COMPONENTS_HOME',
 ]
 
@@ -25,6 +25,7 @@ DEFAULT_SETTINGS = {
 }
 WINDOW_WIDTH = 1100
 WINDOW_HEIGHT = 670
+WINDOW_TITLE = 'Finances'
 FONT = QFont()
 FONT.setFamilies([u".AppleSystemUIFont"] if sys.platform == 'darwin' else [u"Calibri"])
 FONT.setPointSize(12)
@@ -43,6 +44,7 @@ WID_ID_LOADING = generateId()
 WID_ID_LOGIN = generateId()
 WID_ID_CREATE_ACCOUNT = generateId()
 WID_ID_HOME = generateId()
+USER_DEFAULT_DATA = { 'name': 'Usuário' }
 
 LOADING_MESSAGE = 'carregando componentes...'
 

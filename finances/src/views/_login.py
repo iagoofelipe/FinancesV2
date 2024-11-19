@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QMainWindow
 
 from ..UI.generated.ui_Login import Ui_Login
-from .._consts import WID_ID_LOGIN
+from .._consts import WID_ID_LOGIN, WID_ID_CREATE_ACCOUNT, WINDOW_TITLE
 from ..UI.style import parserStyle
 from ..backend._appevents import AppEventHandler
 from ..backend._appmodel import AppModel
@@ -16,6 +16,7 @@ QPushButton::hover { %(button-hover)s }
 class ViewLogin(AbstractView):
     _id = WID_ID_LOGIN
     _style = style
+    _win_title = f'Login | {WINDOW_TITLE}'
     
     def __init__(self, window:QMainWindow, events:AppEventHandler, model:AppModel):
         super().__init__(window, events, model)
@@ -27,6 +28,7 @@ class ViewLogin(AbstractView):
 
         # signals && slots
         self.__ui.btnAcessar.clicked.connect(self.on_btnAcessar_clicked)
+        self.__ui.btnCriar.clicked.connect(lambda: self._events.changeUiById.emit(WID_ID_CREATE_ACCOUNT))
 
     def on_btnAcessar_clicked(self):
         username = self.__ui.lineUsuario.text()

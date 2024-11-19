@@ -54,7 +54,7 @@
        <number>5</number>
       </property>
       <item row="4" column="0">
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="btnUserProfile">
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
@@ -78,7 +78,7 @@
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="btnDash">
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
@@ -130,7 +130,7 @@
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="btnCards">
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
@@ -154,7 +154,7 @@
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="btnRegistry">
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
@@ -191,7 +191,7 @@
        </spacer>
       </item>
       <item row="5" column="0">
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="btnSettings">
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
@@ -341,7 +341,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_6">
+          <widget class="QPushButton" name="btnDateRange">
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -365,7 +365,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_7">
+          <widget class="QPushButton" name="btnChangeProfile">
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -389,7 +389,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_8">
+          <widget class="QPushButton" name="btnLogout">
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>

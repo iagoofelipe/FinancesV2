@@ -43,11 +43,48 @@ class ClientServer:
         }
         
         response = self.__session.post(SERVER_IP+'/auth/login', credentials, headers={'X-CSRFToken': self.__token})
-        return response.json()
+        code = response.status_code
+
+        match code:
+            case 400:
+                data = response.json()
+                result['error'] = data['message']
+
+            case 200:
+                result['success'] = True
+            
+            case _:
+                raise ValueError(f'undefined code response {code} to /auth/login')
+
+        return result
     
-    def getUserData(self, userId:int) -> dict | None:
+    def logout(self):
+        self.__session.get(SERVER_IP+'/auth/logout')
+    
+    def getUserData(self) -> dict | None:
         if not self.isConnected():
             return
         
-        response = self.__session.get(SERVER_IP+'/data/user', params={'userId': userId})
+        response = self.__session.get(SERVER_IP+'/data/session')
+        if response.status_code == 401:
+            return
+        
         return response.json()
+    
+    def createAccount(self, data:dict) -> dict:
+        response = self.__session.post(SERVER_IP+'/auth/create_user', data, headers={'X-CSRFToken': self.__token})
+        result = {'success': False, 'error': ''}
+        code = response.status_code
+        
+        match code:
+            case 400:
+                data = response.json()
+                result['error'] = data['message']
+
+            case 200:
+                result['success'] = True
+            
+            case _:
+                raise ValueError(f'undefined code response {code} to /auth/create_user')
+
+        return result

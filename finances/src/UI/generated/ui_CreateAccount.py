@@ -71,6 +71,16 @@ class Ui_CreateAccount(object):
 
         self.verticalLayout.addWidget(self.widget_4)
 
+        self.lineUsuario = QLineEdit(self.widget_3)
+        self.lineUsuario.setObjectName(u"lineUsuario")
+
+        self.verticalLayout.addWidget(self.lineUsuario)
+
+        self.lineEmail = QLineEdit(self.widget_3)
+        self.lineEmail.setObjectName(u"lineEmail")
+
+        self.verticalLayout.addWidget(self.lineEmail)
+
         self.lineSenha = QLineEdit(self.widget_3)
         self.lineSenha.setObjectName(u"lineSenha")
 
@@ -126,7 +136,7 @@ class Ui_CreateAccount(object):
 
         self.verticalLayout.addWidget(self.widget)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 171, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout.addItem(self.verticalSpacer_2)
 
@@ -138,7 +148,9 @@ class Ui_CreateAccount(object):
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
         QWidget.setTabOrder(self.linePrimeiroNome, self.lineUltimoNome)
-        QWidget.setTabOrder(self.lineUltimoNome, self.lineSenha)
+        QWidget.setTabOrder(self.lineUltimoNome, self.lineUsuario)
+        QWidget.setTabOrder(self.lineUsuario, self.lineEmail)
+        QWidget.setTabOrder(self.lineEmail, self.lineSenha)
         QWidget.setTabOrder(self.lineSenha, self.lineSenhaRepetir)
         QWidget.setTabOrder(self.lineSenhaRepetir, self.btnCriar)
         QWidget.setTabOrder(self.btnCriar, self.btnAcessar)
@@ -151,10 +163,12 @@ class Ui_CreateAccount(object):
     def retranslateUi(self, CreateAccount):
         CreateAccount.setWindowTitle(QCoreApplication.translate("CreateAccount", u"Form", None))
         self.label.setText(QCoreApplication.translate("CreateAccount", u"Finances", None))
-        self.linePrimeiroNome.setPlaceholderText(QCoreApplication.translate("CreateAccount", u"Primeiro Nome", None))
-        self.lineUltimoNome.setPlaceholderText(QCoreApplication.translate("CreateAccount", u"\u00daltimo Nome", None))
-        self.lineSenha.setPlaceholderText(QCoreApplication.translate("CreateAccount", u"Senha", None))
-        self.lineSenhaRepetir.setPlaceholderText(QCoreApplication.translate("CreateAccount", u"digite sua senha novamente", None))
+        self.linePrimeiroNome.setPlaceholderText(QCoreApplication.translate("CreateAccount", u"Primeiro Nome*", None))
+        self.lineUltimoNome.setPlaceholderText(QCoreApplication.translate("CreateAccount", u"\u00daltimo Nome*", None))
+        self.lineUsuario.setPlaceholderText(QCoreApplication.translate("CreateAccount", u"Usu\u00e1rio*", None))
+        self.lineEmail.setPlaceholderText(QCoreApplication.translate("CreateAccount", u"E-mail*", None))
+        self.lineSenha.setPlaceholderText(QCoreApplication.translate("CreateAccount", u"Senha*", None))
+        self.lineSenhaRepetir.setPlaceholderText(QCoreApplication.translate("CreateAccount", u"digite sua senha novamente*", None))
         self.btnCriar.setText(QCoreApplication.translate("CreateAccount", u"criar conta", None))
         self.label_2.setText(QCoreApplication.translate("CreateAccount", u"j\u00e1 possui uma conta? ", None))
         self.btnAcessar.setText(QCoreApplication.translate("CreateAccount", u"acesse agora", None))

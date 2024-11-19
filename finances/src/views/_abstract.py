@@ -1,11 +1,14 @@
 from PySide6.QtCore import QObject
 from PySide6.QtWidgets import QMainWindow, QWidget
+
+from .._consts import WINDOW_TITLE
 from ..backend._appevents import AppEventHandler
 from ..backend._appmodel import AppModel
 
 class AbstractView(QObject):
     _id = -1
     _style = ''
+    _win_title = WINDOW_TITLE
 
     def __init__(self, window:QMainWindow, events:AppEventHandler, model:AppModel):
         super().__init__()
@@ -25,3 +28,4 @@ class AbstractView(QObject):
     def setup(self):
         self._wid = QWidget(self.__win)
         self.__win.setCentralWidget(self._wid)
+        self.__win.setWindowTitle(self._win_title)

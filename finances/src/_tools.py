@@ -2,9 +2,13 @@ from queue import Queue
 
 def queueWorker(q:Queue):
     while True:
-        func, args, kwargs = q.get()
-        signal_done = kwargs.pop('signal_done', None)
-        signal_with_result = kwargs.pop('signal_with_result', False)
+        item = q.get()
+        func = item['func']
+        args = item.get('args', tuple())
+        kwargs = item.get('kwargs', {})
+        signal_done = item.get('signal_done', None)
+        signal_with_result = item.get('signal_with_result', False)
+
         r = func(*args, **kwargs)
 
         # emitindo sinal, quando finalizado

@@ -5,6 +5,7 @@ from ._login import ViewLogin
 from ._loading import ViewLoading
 from ._abstract import AbstractView
 from ._home import ViewHome
+from ._create import ViewCreateAccount
 
 from ..UI.style import style_global
 from .._consts import *
@@ -21,11 +22,17 @@ class AppView(QObject):
         self.__model = model
         self.__currentUiId = -1
         self.__win = QMainWindow()
+        ui_args = (self.__win, self.__events, self.__model)
         self.__uis:dict[int, AbstractView] = {
-            WID_ID_LOADING: ViewLoading(self.__win, self.__events, self.__model),
-            WID_ID_LOGIN: ViewLogin(self.__win, self.__events, self.__model),
-            WID_ID_HOME: ViewHome(self.__win, self.__events, self.__model),
+            WID_ID_LOADING: ViewLoading(*ui_args),
+            WID_ID_LOGIN: ViewLogin(*ui_args),
+            WID_ID_HOME: ViewHome(*ui_args),
+            WID_ID_CREATE_ACCOUNT: ViewCreateAccount(*ui_args),
         }
+
+        self.__events.logoutFinished.connect(self.on_logoutFinished)
+        self.__events.changeUiById.connect(self.setup)
+        self.__events.showPopup.connect(self.showMessage)
     
     def setup(self, uiId:int):
         if uiId not in self.__uis:
@@ -52,6 +59,9 @@ class AppView(QObject):
         self.__win.show()
         self.initializationFinished.emit()
 
-    def showMessage(self, msg:str):
+    def showMessage(self, msg1:str):
         #TODO: adicionar a UI
-        print('Message:', msg)
+        print('Message:', msg1)
+
+    def on_logoutFinished(self):
+        self.setup(WID_ID_LOGIN)

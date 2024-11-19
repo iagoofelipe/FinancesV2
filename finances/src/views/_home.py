@@ -21,14 +21,17 @@ style = parserStyle("""
 class ViewHome(AbstractView):
     _id = WID_ID_HOME
     _style = style
+    _win_title = f'Home | {WINDOW_TITLE}'
     _components = COMPONENTS_HOME
 
     def __init__(self, window:QMainWindow, events:AppEventHandler, model:AppModel):
         super().__init__(window, events, model)
         self.__user_name = 'Usuário'
         self.__setupFinished = False
+        self.__ui = None
 
         self._events.userDataUpdated.connect(self.updateUserFields)
+        self._events.logoutRequired.connect(self.on_logoutRequired)
     
     def setup(self):
         self.__setupFinished = False
@@ -41,6 +44,8 @@ class ViewHome(AbstractView):
 
         self.__setupFinished = True
         self.updateUserFields()
+
+        self.__ui.btnLogout.clicked.connect(lambda: self._events.logoutRequired.emit())
 
     def setupComponent(self, compId:int=COMPONENT_HOME_REGISTRY):
         if compId not in self._components:
@@ -63,9 +68,16 @@ class ViewHome(AbstractView):
         self.__ui.layoutCentral.replaceWidget(old, new)
         old.deleteLater()
 
-    def updateUserFields(self, data:dict=None):
-        if data is not None:
-            self.__user_name = f'{data.get('first_name', 'Usuário')} {data.get('last_name', '')}'
+    def updateUserFields(self, data:dict=USER_DEFAULT_DATA):
+        self.__user_name = data['name']
+        self.__profile_drange = data.get('profileName', '')
             
         if self.__setupFinished:
             self.__ui.lbUser.setText(self.__user_name)
+            self.__ui.lbProfileDateRange.setText(self.__profile_drange)
+
+    def on_logoutRequired(self):
+        if self.__ui is None:
+            return
+        
+        self.__ui.btnLogout.setDisabled(True)
