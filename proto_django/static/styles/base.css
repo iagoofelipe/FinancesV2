@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+
+:root {
+    --border-radius: 5px;
+    --fill-background: #1D1D1D;
+    --fill-primary: #292929;
+    --fill-secondary: #3E3E3E;
+    --fill-secondary-highlight: #555555;
+    --fill-text-primary: #FFFFFF;
+    --fill-text-secondary: #B7B7B7;
+    --fill-button: #535977;
+    --fill-button-highlight: #8390D1;
+    --fill-pago: #6FC043;
+    --fill-pendente: #C6C148;
+    --fill-atrasado: #BC604A;
+    --fill-line: #5A5A5A;
+}
+
+body {
+    background-color: var(--fill-background);
+    color: var(--fill-text-primary);
+    font-family: "Roboto", serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 13pt;
+}
+
+.inp {
+    background-color: var(--fill-secondary);
+    color: var(--fill-text-primary);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 5px;
+    transition-duration: .15s;
+}
+
+.inp:hover, .inp:focus {
+    background-color: var(--fill-secondary-highlight);
+}
+
+.btn {
+    background-color: var(--fill-button);
+    color: var(--fill-text-primary);
+}
+
+.btn:hover {
+    background-color: var(--fill-button-highlight);
+}

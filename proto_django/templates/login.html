@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/login.css' %}">
+{% endblock %}
+
+{% block scripts %}
+<script type="module" src="{% static 'scripts/login.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div id="container-center">
+    <p class="title">Finances</p>
+    <input type="text" name="username" class="inp" id="username" placeholder="usuário">
+    <input type="password" name="password" class="inp" id="password" placeholder="senha">
+    <button class="btn" id="btn-acessar">acessar conta</button>
+</div>
+{% endblock %}
