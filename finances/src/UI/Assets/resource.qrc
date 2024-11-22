@@ -12,5 +12,7 @@
     <file>icons/User-topbar.png</file>
     <file>icons/Info.png</file>
     <file>icons/Edit 2.png</file>
+    <file>icons/Chevron down.png</file>
+    <file>icons/Chevron up.png</file>
   </qresource>
 </RCC>

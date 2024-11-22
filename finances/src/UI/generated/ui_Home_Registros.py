@@ -15,10 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QDoubleSpinBox, QFrame,
-    QGridLayout, QHBoxLayout, QLabel, QLineEdit,
-    QPushButton, QScrollArea, QSizePolicy, QSpacerItem,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QComboBox, QDoubleSpinBox,
+    QFrame, QGridLayout, QHBoxLayout, QLabel,
+    QLineEdit, QPushButton, QScrollArea, QSizePolicy,
+    QSpacerItem, QVBoxLayout, QWidget)
 from . import resource_rc
 
 class Ui_Registros(object):
@@ -42,7 +42,7 @@ class Ui_Registros(object):
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
         self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 928, 579))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents)
-        self.verticalLayout_2.setSpacing(10)
+        self.verticalLayout_2.setSpacing(15)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.widDetalhamento = QWidget(self.scrollAreaWidgetContents)
@@ -206,6 +206,11 @@ class Ui_Registros(object):
 
         self.doubleSpinBox = QDoubleSpinBox(self.widget_2)
         self.doubleSpinBox.setObjectName(u"doubleSpinBox")
+        self.doubleSpinBox.setWrapping(False)
+        self.doubleSpinBox.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.doubleSpinBox.setButtonSymbols(QAbstractSpinBox.UpDownArrows)
+        self.doubleSpinBox.setProperty(u"showGroupSeparator", False)
+        self.doubleSpinBox.setMaximum(99999999999.990005493164063)
 
         self.gridLayout.addWidget(self.doubleSpinBox, 4, 2, 1, 1)
 
@@ -328,6 +333,7 @@ class Ui_Registros(object):
         self.label_6.setText(QCoreApplication.translate("Registros", u"valor", None))
         self.label_8.setText(QCoreApplication.translate("Registros", u"descri\u00e7\u00e3o", None))
         self.label_9.setText(QCoreApplication.translate("Registros", u"categorias", None))
+        self.doubleSpinBox.setPrefix(QCoreApplication.translate("Registros", u"R$ ", None))
         self.label_2.setText(QCoreApplication.translate("Registros", u"tipo", None))
         self.pushButton_2.setText("")
         self.pushButton_3.setText("")
