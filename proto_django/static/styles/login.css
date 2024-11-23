@@ -1,0 +1,16 @@
+#container-center {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#container-center .title {
+    font-size: 40pt;
+    margin: 0;
+}
+
+#container-center .inp, #container-center .btn {
+    width: 300px;
+}

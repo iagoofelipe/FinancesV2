@@ -32,6 +32,42 @@ def parserStyle(style:str) -> str:
 style_global = parserStyle("""
 
 QLineEdit, QComboBox, QDoubleSpinBox { %(box-secondary)s }
+                           
+QComboBox::drop-down {
+    image: url(:/root/icons/Chevron down.png);
+    subcontrol-origin: padding;
+    subcontrol-position: center right;
+    margin-right: 2.5px;
+}
+
+QDoubleSpinBox {
+    padding-left: 0;
+}
+
+QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {
+    subcontrol-origin: border;
+
+    margin-right: 10px;
+    border: none;
+}
+
+QDoubleSpinBox::up-button {
+    subcontrol-position: top right;
+}
+
+QDoubleSpinBox::down-button {
+    subcontrol-position: bottom right;
+}
+                           
+/* QDoubleSpinBox::up-button:hover, QDoubleSpinBox::down-button:hover { background-color: red; } */
+                           
+QDoubleSpinBox::up-arrow {
+    image: url(:/root/icons/Chevron up.png);                 
+}
+
+QDoubleSpinBox::down-arrow {
+    image: url(:/root/icons/Chevron down.png);                 
+}
 
 QLineEdit::hover, QLineEdit::focus { background-color: %(fill-secondary-highlight)s; }
 

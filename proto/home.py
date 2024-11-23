@@ -12,6 +12,7 @@ style = parserStyle(style_global + """
                     
 #btnLimpar::hover, #btnSalvar::hover { %(button-hover)s }
 
+
 """)
 
 
