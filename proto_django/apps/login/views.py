@@ -12,6 +12,7 @@ def authentication(request:HttpRequest):
     username = request.POST.get('username')
     password = request.POST.get('password')
     # user = User.objects.filter(username=username, password=password).first()
+    print(username, password)
     user = auth.authenticate(request, username=username, password=password)
 
     if not user:
