@@ -1,0 +1,56 @@
+{
+    "info": {
+        "description": "API para consumo da aplicação.",
+        "version": "1.0.0",
+        "title": "Finances API"
+    },
+    "host": "192.168.1.19:443",
+    "EndPoint": {
+        "/data/newRegistry": {
+            "entries": [ {
+                    "name": "inout",
+                    "type": "int"
+                }, {
+                    "name": "title",
+                    "type": "str",
+                    "max": 45
+                }, {
+                    "name": "datetime",
+                    "type": "str"
+                }, {
+                    "name": "value",
+                    "type": "decimal",
+                    "max": 11,
+                    "decimal": 2
+                }, {
+                    "name": "description",
+                    "type": "str",
+                    "max": 255
+                }, {
+                    "name": "categories",
+                    "type": "object",
+                    "$ref": "#/definitions/Category"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "Content-Type": "application/json",
+                    "struct": {
+
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Category": {
+            "inout": {
+                "type": "int"
+            },
+            "name": {
+                "type": "str",
+                "max": 45
+            }
+        }
+    }
+}

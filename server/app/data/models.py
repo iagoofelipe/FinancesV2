@@ -6,9 +6,6 @@ TYPES = {
     1: "Entrada",
 }
 
-class Profile(models.Model):
-    name = models.TextField(max_length=45, default='perfil principal')
-    users = models.ManyToManyField(User, through='UserProfileRules')
 
 class Category(models.Model):
     inout = models.IntegerField(choices=TYPES, default=0, null=False)
@@ -21,6 +18,11 @@ class Registry(models.Model):
     value = models.DecimalField(decimal_places=2, max_digits=11, default=0.0)
     description = models.TextField(max_length=255, null=True)
     categories = models.ManyToManyField(Category)
+
+class Profile(models.Model):
+    name = models.TextField(max_length=45, default='perfil principal')
+    users = models.ManyToManyField(User, through='UserProfileRules')
+    registries = models.ManyToManyField(Registry)
 
 class UserProfileRules(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
