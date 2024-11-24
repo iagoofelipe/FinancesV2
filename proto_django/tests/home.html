@@ -11,20 +11,42 @@
 <body>
     <div id="sidebar" class="box">
         <div class="container-top">
-            <p>dashboards</p>
-            <p>registros</p>
-            <p>cartões</p>
+            <div class="sidebar-element">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>dashboards</span>
+            </div>
+            <div class="sidebar-element">
+                <i class="fa-regular fa-clipboard"></i>
+                <span>registros</span>
+            </div>
+            <div class="sidebar-element">
+                <i class="fa-regular fa-credit-card"></i>
+                <span>contas e cartões</span>
+            </div>
         </div>
         <div class="container-down">
-            <p>dashboards</p>
+            <div class="horizontal-line"></div>
+            <div class="sidebar-element">
+                <i class="fa-solid fa-gear"></i>
+                <span>configurações</span>
+            </div>
         </div>
     </div>
     <div id="container-center">
         <div id="topbar" class="box">
-            <p>topbar</p>
+            <div class="left">
+                <i class="fa-regular fa-user user-icon"></i>
+                <div>
+                    <p class="userName">Iago Carvalho</p>
+                    <p id="profileNameRange">contas pessoais, 01/07/2024 - 31/07/2024</p>
+                </div>
+            </div>
+            <div class="right">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </div>
         </div>
         <div class="content box">
-            <p>content</p>
         </div>
     </div>
 </body>
@@ -34,30 +56,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
 
 :root {
+    /* font */
+    --color-primary: #FFFFFF;
+    --color-secondary: #B7B7B7;
+    --font-size: 13pt;
+    --font-size-title: 15pt;
+    
+    /* box */
     --border-radius: 5px;
+    --padding-primary: 15px;
+    --padding-secondary: 10px;
+
+    /* fill */
     --fill-background: #1D1D1D;
     --fill-primary: #292929;
     --fill-secondary: #3E3E3E;
     --fill-secondary-highlight: #555555;
-    --fill-text-primary: #FFFFFF;
-    --fill-text-secondary: #B7B7B7;
     --fill-button: #535977;
     --fill-button-highlight: #8390D1;
     --fill-pago: #6FC043;
     --fill-pendente: #C6C148;
     --fill-atrasado: #BC604A;
     --fill-line: #5A5A5A;
-    --padding-primary: 15px;
-    --padding-secondary: 10px;
+}
+
+body, .font {
+    font-family: "Roboto", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: var(--font-size);
 }
 
 body {
     background-color: var(--fill-background);
-    color: var(--fill-text-primary);
-    font-family: "Roboto", serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 13pt;
+    color: var(--color-primary);
+}
+
+.vertical-line {
+    height: 100%;
+    width: 1px;
+}
+
+.horizontal-line {
+    height: 1px;
+    width: 100%;
+}
+
+.vertical-line, .horizontal-line {
+    background-color: var(--fill-line);
 }
 
 .inp {
@@ -74,7 +120,7 @@ body {
 
 .btn {
     background-color: var(--fill-button);
-    color: var(--fill-text-primary);
+    color: var(--color-primary);
 }
 
 .btn:hover {
@@ -87,9 +133,14 @@ body {
     border-radius: var(--border-radius);
 }
 
+.title {
+    font-size: var(--font-size-title);
+}
+
 /* home */
 :root {
-    --sidebar-width: 155px;
+    --sidebar-width: 180px;
+    --topbar-height: 80px;
 }
 
 body {
@@ -111,21 +162,83 @@ p {
     justify-content: space-between;
     margin-right: var(--padding-primary);
     font-size: 11pt;
-    color: var(--fill-text-secondary);
+    color: var(--color-secondary);
 }
 
-#container-center {
-    width: calc(100% - var(--sidebar-width));
+.sidebar-element {
+    padding: 5px;
+    border-radius: var(--border-radius);
+    transition-duration: .5s;
+}
+
+.sidebar-element:hover {
+    cursor: pointer;
+    background-color: var(--fill-button-highlight);
+    color: var(--color-primary);
+}
+
+.sidebar-element span {
+    margin-left: 3px;
+}
+
+.container-top .sidebar-element {
+    margin-bottom: 10px;
+}
+
+.container-down .sidebar-element {
+    margin-top: 10px;
 }
 
 #topbar {
     margin-bottom: var(--padding-primary);
+    height: var(--topbar-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#topbar .right i {
+    margin-left: 10px;
+}
+
+#topbar .right i:hover {
+    cursor: pointer;
+}
+
+#topbar .left {
+    display: flex;
+    align-items: center;
+}
+
+
+#topbar .left .user-icon {
+    font-size: 32pt;
+    margin-right: 10px;
+}
+
+#topbar .userName {
+    font-size: 16pt;
+}
+
+#profileNameRange {
+    color: var(--color-secondary);
+    font-size: 11pt;
+}
+
+#container-center {
+    width: calc(100% - var(--sidebar-width));
+    height: 100%;
+}
+
+#container-center .content {
+    height: calc(100% - var(--topbar-height) - var(--padding-primary));
 }
 
 
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/1aaeb4b58d.js" crossorigin="anonymous"></script>
 <script src="jquery-3.7.1.min.js"></script>
 
 </html>
