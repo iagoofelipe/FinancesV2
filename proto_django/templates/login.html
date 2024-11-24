@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-{% csrf_token %}
-
 {% load static %}
 
 {% block styles %}
@@ -9,7 +7,7 @@
 {% endblock %}
 
 {% block scripts %}
-<script type="module" src="{% static 'scripts/login.js' %}"></script>
+<script type="module" src="{% static 'scripts/views/login.js' %}"></script>
 {% endblock %}
 
 {% block body %}

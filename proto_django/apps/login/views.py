@@ -20,3 +20,6 @@ def authentication(request:HttpRequest):
 
     auth.login(request, user)
     return HttpResponse()
+
+def token(request):
+    return render(request, 'token.html')
