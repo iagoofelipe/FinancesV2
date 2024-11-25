@@ -1,8 +1,9 @@
+from django.urls import path
 from django.shortcuts import render
 from django.contrib import auth
 from django.http import HttpRequest, HttpResponseBadRequest, HttpResponse
 
-def authentication(request:HttpRequest):
+def login(request:HttpRequest):
     if request.method != 'POST':
         return HttpResponseBadRequest()
     
@@ -24,3 +25,10 @@ def token(request):
 def logout(request):
     auth.logout(request)
     return HttpResponse()
+
+
+urlpatterns = [
+    path('login', login, name='login'),
+    path('token', token, name='token'),
+    path('logout', logout, name='logout'),
+]

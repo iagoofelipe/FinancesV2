@@ -4,7 +4,8 @@ export default class FinancesApi {
     #token = '';
 
     async initialize() {
-        await $.get('/api/token')
+        console.log('api initializing');
+        await $.get('/api/auth/token')
             .done(() => {
                 this.#token = getCookieValue('csrftoken');
             });
@@ -12,7 +13,7 @@ export default class FinancesApi {
 
     async authenticate(username, password) {
         let request = {
-            url: '/api/auth',
+            url: '/api/auth/login',
             data: {
                 username: username,
                 password: password,
@@ -54,7 +55,7 @@ export default class FinancesApi {
 
     async logout() {
         try {
-            await $.get('/api/logout');
+            await $.get('/api/auth/logout');
             window.location.href = '/login';
             return true;
 
