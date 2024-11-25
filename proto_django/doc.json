@@ -1,0 +1,317 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Finances API",
+        "summary": "API para consumo dos recursos da aplicação"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api",
+            "description": "API de produção"
+        },
+        {
+            "url": "http://127.0.0.1:8000/api/auth",
+            "description": "Autenticação"
+        },
+        {
+            "url": "http://127.0.0.1:8000/api/reg",
+            "description": "Registros"
+        },
+        {
+            "url": "http://127.0.0.1:8000/api/info",
+            "description": "Estruturas"
+        }
+    ],
+    "paths": {
+        "/info/recorrences": {
+            "get": {
+                "summary": "Lista de recorrências salvas",
+                "description": "retorna lista com tipos de recorrências predefinidas",
+                "operationId": "getRecorrences",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/RecorrenceFormat"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/reg/new": {
+            "post": {
+                "summary": "Novo registro",
+                "operationId": "newRegitry",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/X-CSRFToken"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "entrada ou saída",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "título do registro",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "datetime",
+                        "in": "query",
+                        "description": "data e hora do registro",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "description": "valor do registro",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "double"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "descrição do registro",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "recorrenceFormatId",
+                        "in": "query",
+                        "description": "tipo de recorrência",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "summary": "Login na API",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/X-CSRFToken"
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "nome de usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "senha do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "usuário autenticado"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "405": {
+                        "$ref": "#/components/responses/405"
+                    },
+                    "406": {
+                        "description": "usuário inválido",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServerResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "get": {
+                "summary": "Logout da API",
+                "operationId": "logout",
+                "responses": {
+                    "200": {
+                        "description": "logout realizado"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "405": {
+                        "$ref": "#/components/responses/405"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/auth/token": {
+            "get": {
+                "summary": "Token de requisições",
+                "description": "gera o token CSRF em Cookie para requisições seguras, necessário para métodos POST",
+                "operationId": "getToken",
+                "responses": {
+                    "200": {
+                        "description": "token gerado"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "parameters": {
+            "X-CSRFToken": {
+                "name": "X-CSRFToken",
+                "in": "header",
+                "description": "Token CSRF",
+                "required": true,
+                "type": "string"
+            }
+        },
+        "schemas": {
+            "ServerResponse": {
+                "type": "object",
+                "properties": {
+                    "msg": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Registry": {
+                "type": "object"
+            },
+            "RecorrenceFormat": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "hourRange": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "400": {
+                "description": "solicitação inválida",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ServerResponse"
+                        }
+                    }
+                }
+            },
+            "401": {
+                "description": "usuário não autenticado",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ServerResponse"
+                        }
+                    }
+                }
+            },
+            "405": {
+                "description": "método inválido"
+            },
+            "422": {
+                "description": "erro de validação",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ServerResponse"
+                        }
+                    }
+                }
+            },
+            "500": {
+                "description": "erro inesperado"
+            }
+        }
+    }
+}

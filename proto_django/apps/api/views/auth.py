@@ -1,31 +1,39 @@
 from django.urls import path
 from django.shortcuts import render
 from django.contrib import auth
-from django.http import HttpRequest, HttpResponseBadRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse
+
+import tools
 
 def login(request:HttpRequest):
-    if request.method != 'POST':
-        return HttpResponseBadRequest()
+    r = tools.checkRequest(request, False, 'POST')
+    if r is not None:
+        return r
     
     username = request.POST.get('username')
     password = request.POST.get('password')
-    # user = User.objects.filter(username=username, password=password).first()
-    print(username, password)
+    
+    if None in (username, password):
+        return tools.jResponse('preencha todos os campos!', 400)
+    
     user = auth.authenticate(request, username=username, password=password)
 
     if not user:
-        return HttpResponse('invalid credentials', status=403)
+        return tools.jResponse('usuário ou senha incorretos!', 406)
 
     auth.login(request, user)
     return HttpResponse()
 
-def token(request):
-    return render(request, 'token.html')
-
 def logout(request):
+    r = tools.checkRequest(request)
+    if r is not None:
+        return r
+    
     auth.logout(request)
     return HttpResponse()
 
+def token(request):
+    return render(request, 'token.html')
 
 urlpatterns = [
     path('login', login, name='login'),
