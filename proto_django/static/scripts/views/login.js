@@ -1,4 +1,5 @@
-import { getCookieValue } from "../tools.js";
+import { showNotification } from "../tools.js";
+import FinancesApi from "../api.js";
 
 $(() => {
     let login = new LoginView();
@@ -6,41 +7,37 @@ $(() => {
 });
 
 export default class LoginView {
-    #token = '';
+    #api;
 
     constructor() {
         $('#btn-acessar').on("click", () => this.#on_btnAcessar_clicked());
     }
     
-    initialize() {
-        $.get('/auth/token')
-            .done(() => {
-                this.#token = getCookieValue('csrftoken');
-            });
+    async initialize() {
+        if(globalThis.financesApi == undefined) {
+            let api = new FinancesApi();
+            await api.initialize();
+
+            globalThis.financesApi = api;
+        }
+    
+        this.#api = globalThis.financesApi;
     }
 
-    #on_btnAcessar_clicked() {
-        let request = {
-            url: '/auth/auth',
-            data: {
-                username: $('#username').val(),
-                password: $('#password').val(),
-            },
-            headers: {
-                'X-CSRFToken': this.#token,
-            }
-        };
+    async #on_btnAcessar_clicked() {
+        let username = $('#username').val();
+        let password = $('#password').val();
 
-        $.post(request)
-            .done(() => this.#on_loginSuccess())
-            .fail((r) => this.#on_loginFail(r));
-    }
+        if(!username || !password) {
+            showNotification("preencha todos os campos!");
+            return;
+        }
 
-    #on_loginSuccess() {
-        window.location.href = "/home";
-    }
-
-    #on_loginFail(response) {
-        console.log(response.responseText);
+        let response = await this.#api.authenticate($('#username').val(), $('#password').val());
+        if(response.success) {
+            window.location.href = "/home";
+        } else {
+            showNotification(response.server.message);
+        }
     }
 }

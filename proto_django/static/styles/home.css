@@ -1,0 +1,64 @@
+:root {
+    --sidebar-width: 180px;
+    --topbar-height: 80px;
+}
+
+body .content {
+    height: 100vh;
+    padding: 10px;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+}
+
+#sidebar {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 11pt;
+    color: var(--color-secondary);
+}
+
+#topbar {
+    height: min-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#topbar .container-top .box-element-clickable {
+    margin-bottom: 10px;
+}
+
+#topbar .container-down .box-element-clickable {
+    margin-top: 10px;
+}
+
+#topbar .right i {
+    margin-left: 10px;
+}
+
+#topbar .left {
+    display: flex;
+    align-items: center;
+}
+
+
+#topbar .left .user-icon {
+    font-size: 32pt;
+    margin-right: 10px;
+}
+
+#topbar .userName {
+    font-size: 16pt;
+}
+
+#profileNameRange {
+    color: var(--color-secondary);
+    font-size: 11pt;
+}
+
+#container-center {
+    grid-template-rows: repeat(2, min-content);
+}

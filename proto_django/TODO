@@ -1,0 +1,1 @@
+[] verificar porque, ao navegar entre páginas, é requisitado um novo token GET /api/token

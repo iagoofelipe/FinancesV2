@@ -1,13 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
 
 :root {
+    /* font */
+    --color-primary: #FFFFFF;
+    --color-secondary: #B7B7B7;
+    --font-size: 13pt;
+    --font-size-title: 15pt;
+    
+    /* box */
     --border-radius: 5px;
+    --padding-primary: 15px;
+    --padding-secondary: 10px;
+
+    /* fill */
     --fill-background: #1D1D1D;
     --fill-primary: #292929;
     --fill-secondary: #3E3E3E;
     --fill-secondary-highlight: #555555;
-    --color-primary: #FFFFFF;
-    --color-secondary: #B7B7B7;
     --fill-button: #535977;
     --fill-button-highlight: #8390D1;
     --fill-pago: #6FC043;
@@ -16,26 +25,88 @@
     --fill-line: #5A5A5A;
 }
 
-body {
-    background-color: var(--fill-background);
-    color: var(--color-primary);
+body, .font {
     font-family: "Roboto", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 13pt;
+    font-size: var(--font-size);
+    color: var(--color-primary);
 }
 
+body {
+    background-color: var(--fill-background);
+}
+
+p {
+    margin: 0;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 7px;
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.vertical-line {
+    height: 100%;
+    width: 1px;
+}
+
+.horizontal-line {
+    height: 1px;
+    width: 100%;
+}
+
+.vertical-line, .horizontal-line {
+    background-color: var(--fill-line);
+}
+
+.title {
+    font-size: var(--font-size-title);
+}
+
+.scroll-area {
+    overflow: auto;
+}
+
+/* inp */
 .inp {
     background-color: var(--fill-secondary);
-    color: var(--color-primary);
     border: none;
     border-radius: var(--border-radius);
     padding: 5px;
     transition-duration: .15s;
+    color: var(--color-primary);
 }
 
 .inp:hover, .inp:focus {
     background-color: var(--fill-secondary-highlight);
+}
+
+.inp-box, .inp-box-with-icon {
+    display: grid;
+    column-gap: 5px;
+    align-items: center;
+}
+
+.inp-box {
+    grid-template-columns: 129px 1fr;
+}
+
+.inp-box-with-icon {
+    grid-template-columns: 90px 34px 1fr;
 }
 
 .btn {
@@ -45,4 +116,64 @@ body {
 
 .btn:hover {
     background-color: var(--fill-button-highlight);
+}
+
+.box {
+    background-color: var(--fill-primary);
+    padding: var(--padding-secondary);
+    border-radius: var(--border-radius);
+}
+
+.box .header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--fill-line);
+}
+
+.box .content {
+    width: 100%;
+}
+
+.box-btns {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.box-btns input {
+    margin-left: 10px;
+}
+
+.box-element-clickable {
+    padding: 8px;
+    border-radius: var(--border-radius);
+    color: var(--color-secondary);
+    transition-duration: .5s;
+}
+
+.box-element-clickable:hover {
+    cursor: pointer;
+    background-color: var(--fill-button-highlight);
+    color: var(--color-primary);
+}
+
+.box-element-clickable span {
+    margin-left: 3px;
+}
+
+.grid, .grid-wrapper-two {
+    display: grid;
+    row-gap: 15px;
+    column-gap: 15px;
+}
+
+
+@media screen and (min-width: 950px) {
+    .grid-wrapper-two {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-wrapper-two .box-btns {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
 }
