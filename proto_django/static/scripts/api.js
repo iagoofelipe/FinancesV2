@@ -1,13 +1,13 @@
 import { getCookieValue, showNotification } from "./tools.js";
 
 export default class FinancesApi {
-    #header = {'X-CSRFToken': ''};
+    #token;
 
     async initialize() {
         console.log('api initializing');
         await $.get('/api/auth/token')
             .done(() => {
-                this.#header['X-CSRFToken'] = getCookieValue('csrftoken');
+                this.#token = getCookieValue('csrftoken');
             });
     }
 
@@ -20,7 +20,9 @@ export default class FinancesApi {
                 username: username,
                 password: password,
             },
-            headers: this.#header
+            headers: {
+                'X-CSRFToken': this.#token
+            }
         };
 
         try {
@@ -56,10 +58,12 @@ export default class FinancesApi {
             response = undefined,
             success = false,
             request = {
-            url: '/api/reg/new',
-            data: data,
-            headers: this.#header
-        };
+                url: '/api/reg/new',
+                data: data,
+                headers: {
+                    'X-CSRFToken': this.#token
+                }
+            };
 
         try {
             await $.post(request)

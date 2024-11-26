@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.contrib import auth
 from django.http import HttpRequest, HttpResponse
 
-import tools
+import src.tools as tools
 
 def login(request:HttpRequest):
     r = tools.checkRequest(request, False, 'POST')

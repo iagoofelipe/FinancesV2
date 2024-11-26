@@ -1,7 +1,13 @@
 from django.http import HttpRequest, HttpResponse
 
 def checkRequest(request:HttpRequest, checkUser=True, method='GET') -> HttpResponse | None:
-    """ realiza uma série de verificações, como de usuário e método """
+    """
+    realiza uma série de verificações
+
+    Respostas de erro, em ordem de verificação:
+        - 405: método correto
+        - 401: usuário autenticado (caso checkUser verdadeiro)
+    """
     if request.method != method:
         return HttpResponse(status=405)
     

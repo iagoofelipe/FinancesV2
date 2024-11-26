@@ -1,9 +1,9 @@
 from django.urls import path
-from django import http
 from django.http import HttpRequest, HttpResponse
 from datetime import datetime
+import time
 
-import tools
+import src.tools as tools
 from ..models import Registry
 
 def new_registry(request:HttpRequest):
@@ -12,12 +12,12 @@ def new_registry(request:HttpRequest):
         return r
     
     default = {
-        'type': 0,
-        'datetime': datetime.now().strftime('%Y-%m-%d %H-%M-%S'),
+        'inout': 0,
+        'datetime': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'description': '',
         # 'recorrenceFormatId': None,
     }
-    params = ('type', 'title', 'datetime', 'value', 'description')
+    params = ('inout', 'title', 'datetime', 'value', 'description')
     data = {}
 
     for param in params:
@@ -25,13 +25,14 @@ def new_registry(request:HttpRequest):
             return tools.jResponse('preencha todos os campos obrigatórios!', 400)
         
         # montando dados do registro
-        data[param] = request.POST.get(param, default[param])
+        data[param] = request.POST.get(param, default.get(param))
 
     # salvando registro
     reg = Registry(**data)
     reg.save()
 
     r = '{"id": %s}' % reg.pk
+    time.sleep(5)
     return HttpResponse(r, content_type='application/json')
 
 

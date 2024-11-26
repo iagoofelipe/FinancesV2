@@ -109,6 +109,10 @@ p {
     grid-template-columns: 90px 34px 1fr;
 }
 
+.inp-required {
+    outline: 2px solid #dc3545;
+}
+
 .btn {
     background-color: var(--fill-button);
     color: var(--color-primary);

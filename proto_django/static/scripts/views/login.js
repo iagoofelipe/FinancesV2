@@ -33,8 +33,7 @@ export default class LoginView {
             return;
         }
 
-        let response = await this.#api.authenticate($('#username').val(), $('#password').val());
-        if(response.success) {
+        if(await this.#api.authenticate($('#username').val(), $('#password').val())) {
             window.location.href = "/home";
         }
     }

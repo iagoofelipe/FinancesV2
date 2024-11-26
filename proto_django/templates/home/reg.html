@@ -1,5 +1,5 @@
-<div id="container-center" class="grid scroll-area">
-    <div id="container-registry" class="box grid">
+<div id="container-reg" class="grid scroll-area">
+    <div id="container-new-reg" class="box grid">
         <div class="header">
             <p class="title">Novo Lançamento</p>
         </div>
@@ -7,16 +7,20 @@
             <div class="inp-box-with-icon">
                 <p>Tipo</p>
                 <i></i>
-                <input type="text" class="inp">
+                <!-- <input id="inp-new-reg-type" type="text" class="inp"> -->
+                 <select id="inp-new-reg-inout" class="inp">
+                    <option value="0">Saída</option>
+                    <option value="1">Entrada</option>
+                 </select>
             </div>
             <div class="inp-box">
                 <p>Título</p>
-                <input type="text" class="inp">
+                <input id="inp-new-reg-title" type="text" class="inp">
             </div>
             <div class="inp-box-with-icon">
                 <p>Data/Hora</p>
                 <i class="fa-solid fa-circle-info box-element-clickable" title="info"></i>
-                <input type="text" class="inp">
+                <input type="datetime" class="inp">
             </div>
             <div class="inp-box-with-icon">
                 <p>Recorrência</p>
@@ -25,7 +29,7 @@
             </div>
             <div class="inp-box">
                 <p>Valor</p>
-                <input type="text" class="inp">
+                <input id="inp-new-reg-value" type="number" min="0.01" step="0.01" class="inp">
             </div>
             <div class="inp-box">
                 <p>Método</p>
@@ -33,7 +37,7 @@
             </div>
             <div class="inp-box">
                 <p>Descrição</p>
-                <input type="text" class="inp">
+                <input id="inp-new-reg-description" type="text" class="inp">
             </div>
             <div class="inp-box-with-icon">
                 <p>Categorias</p>
@@ -42,8 +46,8 @@
             </div>
         </div>
         <div class="box-btns">
-            <input type="button" class="btn" value="limpar">
-            <input type="button" class="btn" value="salvar">
+            <input type="button" class="btn" id="btn-new-limpar" value="limpar">
+            <input type="button" class="btn" id="btn-new-salvar" value="salvar">
         </div>
     </div>
     <div id="container-details" class="box grid">
@@ -88,10 +92,6 @@
                 <p>Categorias</p>
                 <input type="text" class="inp">
             </div>
-        </div>
-        <div class="box-btns">
-            <input type="button" class="btn" value="limpar">
-            <input type="button" class="btn" value="salvar">
         </div>
     </div>
 </div>

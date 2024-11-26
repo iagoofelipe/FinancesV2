@@ -52,6 +52,50 @@
                 }
             }
         },
+        "/info/fields": {
+            "get": {
+                "summary": "Informações de um conjunto de campos",
+                "operationId": "getFieldsInfo",
+                "parameters": [
+                    {
+                        "name": "field",
+                        "in": "query",
+                        "description": "conjunto de campos a ser consultado",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/FieldProperties"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "405": {
+                        "$ref": "#/components/responses/405"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
         "/reg/new": {
             "post": {
                 "summary": "Novo registro",
@@ -61,7 +105,7 @@
                         "$ref": "#/components/parameters/X-CSRFToken"
                     },
                     {
-                        "name": "type",
+                        "name": "inout",
                         "in": "query",
                         "description": "entrada ou saída",
                         "required": false,
@@ -271,6 +315,32 @@
                     "hourRange": {
                         "type": "integer",
                         "format": "int64"
+                    }
+                }
+            },
+            "FieldProperties": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "required": {
+                        "type": "boolean"
+                    },
+                    "default": {
+                        "type": "string"
+                    },
+                    "options": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 }
             }

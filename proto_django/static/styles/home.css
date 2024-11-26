@@ -59,6 +59,8 @@ body .content {
     font-size: 11pt;
 }
 
-/* #container-center {
+/* home - reg */
+
+#container-reg {
     grid-template-rows: repeat(2, min-content);
-} */
+}
