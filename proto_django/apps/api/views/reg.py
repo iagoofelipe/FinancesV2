@@ -28,7 +28,11 @@ def new_registry(request:HttpRequest):
         data[param] = request.POST.get(param, default[param])
 
     # salvando registro
-    # Registry(data)
+    reg = Registry(**data)
+    reg.save()
+
+    r = '{"id": %s}' % reg.pk
+    return HttpResponse(r, content_type='application/json')
 
 
 urlpatterns = [

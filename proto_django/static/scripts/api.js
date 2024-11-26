@@ -1,56 +1,42 @@
 import { getCookieValue, showNotification } from "./tools.js";
 
 export default class FinancesApi {
-    #token = '';
+    #header = {'X-CSRFToken': ''};
 
     async initialize() {
         console.log('api initializing');
         await $.get('/api/auth/token')
             .done(() => {
-                this.#token = getCookieValue('csrftoken');
+                this.#header['X-CSRFToken'] = getCookieValue('csrftoken');
             });
     }
 
     async authenticate(username, password) {
-        let request = {
+        let
+            success = true,
+            request = {
             url: '/api/auth/login',
             data: {
                 username: username,
                 password: password,
             },
-            headers: {
-                'X-CSRFToken': this.#token,
-            }
-        };
-        
-        let response = {
-            success: true,
-            server: {
-                message: "",
-            },
+            headers: this.#header
         };
 
         try {
-            await $.post(request)
-                .done((r) => {
-                    response.server = r;
-                });
-
+            await $.post(request);
         } catch (r) {
-            response.success = false;
+            success = false;
+            let
+                s = r.status,
+                result = (s == 200 || s == 400 || s == 405 || s == 406);
 
-            switch (r.status) {
-                case 403:
-                    response.server.message = "senha ou usuário incorretos";
-                    break;
-            
-                default:
-                    response.server.message = `serverMessage: ${r.responseText}`;
-                    break;
-            }
+            showNotification(
+                result? r.responseJSON.msg : "um erro inesperado ocorreu durante a autenticação"
+            );
         }
 
-        return response;
+        return success;
     }
 
     async logout() {
@@ -63,5 +49,33 @@ export default class FinancesApi {
             showNotification('um erro ocorreu durante o log out');
             return false;
         }
+    }
+
+    async newRegistry(data) {
+        let
+            response = undefined,
+            success = false,
+            request = {
+            url: '/api/reg/new',
+            data: data,
+            headers: this.#header
+        };
+
+        try {
+            await $.post(request)
+                .done((r) => {
+                    response = r;
+                    success = true;
+                });
+
+        } catch (r) {
+            let s = r.status;
+
+            showNotification(
+                (s == 400 || s == 401)? r.responseJSON.msg : 'um erro ocorreu durante o cadastro do novo registro'
+            );
+        }
+
+        return { success: success, response: response }
     }
 }

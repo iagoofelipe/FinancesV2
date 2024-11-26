@@ -150,10 +150,13 @@ p {
     transition-duration: .5s;
 }
 
-.box-element-clickable:hover {
-    cursor: pointer;
+.box-element-clickable:hover, .box-element-clickable-focus {
     background-color: var(--fill-button-highlight);
     color: var(--color-primary);
+}
+
+.box-element-clickable:hover {
+    cursor: pointer;
 }
 
 .box-element-clickable span {

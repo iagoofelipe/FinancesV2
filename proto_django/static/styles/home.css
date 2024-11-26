@@ -20,19 +20,19 @@ body .content {
     color: var(--color-secondary);
 }
 
+#sidebar .container-top .box-element-clickable {
+    margin-bottom: 10px;
+}
+
+#sidebar .container-bottom .box-element-clickable {
+    margin-top: 10px;
+}
+
 #topbar {
     height: min-content;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-#topbar .container-top .box-element-clickable {
-    margin-bottom: 10px;
-}
-
-#topbar .container-down .box-element-clickable {
-    margin-top: 10px;
 }
 
 #topbar .right i {
@@ -59,6 +59,6 @@ body .content {
     font-size: 11pt;
 }
 
-#container-center {
+/* #container-center {
     grid-template-rows: repeat(2, min-content);
-}
+} */

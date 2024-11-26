@@ -14,22 +14,22 @@
 <div class="content grid">
     <div id="sidebar" class="box">
         <div class="container-top">
-            <div class="box-element-clickable">
+            <div class="box-element-clickable" id="box-dash">
                 <i class="fa-solid fa-chart-line"></i>
                 <span>dashboards</span>
             </div>
-            <div class="box-element-clickable">
+            <div class="box-element-clickable" id="box-reg">
                 <i class="fa-regular fa-clipboard"></i>
                 <span>registros</span>
             </div>
-            <div class="box-element-clickable">
+            <div class="box-element-clickable" id="box-card">
                 <i class="fa-regular fa-credit-card"></i>
                 <span>contas e cartões</span>
             </div>
         </div>
-        <div class="container-down">
+        <div class="container-bottom">
             <div class="horizontal-line"></div>
-            <div class="box-element-clickable">
+            <div class="box-element-clickable" id="box-settings">
                 <i class="fa-solid fa-gear"></i>
                 <span>configurações</span>
             </div>
@@ -48,102 +48,6 @@
             <i id="btn-logout" class="fa-solid fa-arrow-right-from-bracket box-element-clickable" title="sair"></i>
         </div>
     </div>
-    <div id="container-center" class="grid scroll-area">
-        <div id="container-registry" class="box grid">
-            <div class="header">
-                <p class="title">Novo Lançamento</p>
-            </div>
-            <div class="grid-wrapper-two">
-                <div class="inp-box-with-icon">
-                    <p>Tipo</p>
-                    <i></i>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Título</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box-with-icon">
-                    <p>Data/Hora</p>
-                    <i class="fa-solid fa-circle-info box-element-clickable" title="info"></i>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box-with-icon">
-                    <p>Recorrência</p>
-                    <i class="fa-solid fa-circle-info box-element-clickable" title="info"></i>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Valor</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Método</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Descrição</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box-with-icon">
-                    <p>Categorias</p>
-                    <i class="fa-solid fa-pen box-element-clickable"></i>
-                    <input type="text" class="inp">
-                </div>
-            </div>
-            <div class="box-btns">
-                <input type="button" class="btn" value="limpar">
-                <input type="button" class="btn" value="salvar">
-            </div>
-        </div>
-        <div id="container-details" class="box grid">
-            <div class="header">
-                <div class="right">
-                    <p class="title">Detalhamento</p>
-                </div>
-                <div class="left">
-                    <i class="fa-solid fa-trash box-element-clickable" title="excluir registro"></i>
-                </div>
-            </div>
-            <div class="grid-wrapper-two">
-                <div class="inp-box">
-                    <p>Tipo</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Título</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Data/Hora</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Valor</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>status</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Método</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Descrição</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Categorias</p>
-                    <input type="text" class="inp">
-                </div>
-            </div>
-            <div class="box-btns">
-                <input type="button" class="btn" value="limpar">
-                <input type="button" class="btn" value="salvar">
-            </div>
-        </div>
-    </div>
+    <div id="container-center"></div>
 </div>
 {% endblock %}

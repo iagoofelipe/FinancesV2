@@ -1,4 +1,5 @@
 import FinancesApi from "../api.js";
+import { showNotification } from "../tools.js";
 
 $(() => {
     let view = new HomeView();
@@ -6,7 +7,7 @@ $(() => {
 });
 
 export default class HomeView {
-    #api;
+    #currentTabId = '';
 
     constructor() {
     }
@@ -19,9 +20,35 @@ export default class HomeView {
             globalThis.financesApi = api;
         }
 
-        this.#api = globalThis.financesApi;
+        // this.#api = globalThis.financesApi;
+        
+        // configurando eventos
+        $('#box-dash').on('click', () => this.#replaceContent('dash'));
+        $('#box-reg').on('click', () => this.#replaceContent('reg'));
+        $('#box-card').on('click', () => this.#replaceContent('card'));
+        $('#box-settings').on('click', () => this.#replaceContent('settings'));
 
-        $('#btn-logout').on('click', () => this.#api.logout());
-        console.log('initialization finished');
+        $('#box-reg').click();
+    }
+
+    async #replaceContent(op) {
+        let
+            old_id = this.#currentTabId,
+            new_id = `#box-${op}`;
+
+        this.#currentTabId = new_id;
+        
+        $(old_id).removeClass('box-element-clickable-focus');
+        $(new_id).addClass('box-element-clickable-focus');
+
+        await $.get(`/home/${op}`)
+            .done((r) => {
+                $('#container-center').remove();
+                $(r).appendTo('body .content');
+            });
+    }
+
+    async newRegistryRequired() {
+
     }
 }
