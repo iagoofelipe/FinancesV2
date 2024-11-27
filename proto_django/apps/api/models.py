@@ -1,17 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-TYPES = {
-    0: "Saída",
-    1: "Entrada",
-}
+from src import consts
 
 class Category(models.Model):
-    inout = models.IntegerField(choices=TYPES, default=0, null=False)
+    inout = models.IntegerField(choices=consts.TYPES_INOUT, default=0, null=False)
     name = models.TextField(max_length=45)
 
 class Registry(models.Model):
-    inout = models.IntegerField(choices=TYPES, default=0, null=False)
+    inout = models.IntegerField(choices=consts.TYPES_INOUT, default=0, null=False)
     title = models.TextField(max_length=45, null=True)
     datetime = models.DateTimeField()
     value = models.DecimalField(decimal_places=2, max_digits=11, default=0.0)

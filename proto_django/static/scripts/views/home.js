@@ -28,6 +28,9 @@ export default class HomeView {
         }
 
         this.#api = globalThis.financesApi;
+
+        // eventos - topbar
+        $('#btn-logout').on('click', () => this.#api.logout());
         
         // eventos - navbar
         $('#box-dash').on('click', () => this.#replaceContent('dash'));

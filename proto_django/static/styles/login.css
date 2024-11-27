@@ -20,4 +20,5 @@ body {
 
 #container-center .inp, #container-center .btn {
     width: 300px;
+    text-align: center;
 }

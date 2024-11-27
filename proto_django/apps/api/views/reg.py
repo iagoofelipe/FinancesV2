@@ -35,6 +35,8 @@ def new_registry(request:HttpRequest):
     time.sleep(5)
     return HttpResponse(r, content_type='application/json')
 
+def regs(request:HttpRequest):
+    pass
 
 urlpatterns = [
     path('new', new_registry, name='new'),

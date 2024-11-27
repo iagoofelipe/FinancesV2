@@ -25,15 +25,21 @@ export default class LoginView {
     }
 
     async #on_btnAcessar_clicked() {
-        let username = $('#username').val();
-        let password = $('#password').val();
+        let
+            username = $('#username').val(),
+            password = $('#password').val(),
+            success = false;
 
         if(!username || !password) {
             showNotification("preencha todos os campos!");
             return;
         }
 
-        if(await this.#api.authenticate($('#username').val(), $('#password').val())) {
+        $('#btn-acessar').prop('disabled', true);
+        success = await this.#api.authenticate($('#username').val(), $('#password').val());
+        $('#btn-acessar').prop('disabled', false);
+        
+        if(success) {
             window.location.href = "/home";
         }
     }

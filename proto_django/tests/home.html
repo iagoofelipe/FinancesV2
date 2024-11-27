@@ -11,145 +11,191 @@
 
 </head>
 
-<body >
-    <div class="content grid">
-
-    <div id="sidebar" class="box">
-        <div class="container-top">
-            <div class="box-element-clickable">
-                <i class="fa-solid fa-chart-line"></i>
-                <span>dashboards</span>
+<body>
+    <div id="body-content" class="grid">
+        <div id="sidebar" class="box">
+            <div class="container-top">
+                <div class="box-element-clickable">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>dashboards</span>
+                </div>
+                <div class="box-element-clickable">
+                    <i class="fa-regular fa-clipboard"></i>
+                    <span>registros</span>
+                </div>
+                <div class="box-element-clickable">
+                    <i class="fa-regular fa-credit-card"></i>
+                    <span>contas e cartões</span>
+                </div>
             </div>
-            <div class="box-element-clickable">
-                <i class="fa-regular fa-clipboard"></i>
-                <span>registros</span>
-            </div>
-            <div class="box-element-clickable">
-                <i class="fa-regular fa-credit-card"></i>
-                <span>contas e cartões</span>
-            </div>
-        </div>
-        <div class="container-down">
-            <div class="horizontal-line"></div>
-            <div class="box-element-clickable">
-                <i class="fa-solid fa-gear"></i>
-                <span>configurações</span>
-            </div>
-        </div>
-    </div>
-    <div id="topbar" class="box">
-        <div class="left">
-            <i class="fa-regular fa-user user-icon"></i>
-            <div>
-                <p class="userName">Iago Carvalho</p>
-                <p id="profileNameRange">contas pessoais, 01/07/2024 - 31/07/2024</p>
+            <div class="container-down">
+                <div class="horizontal-line"></div>
+                <div class="box-element-clickable">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>configurações</span>
+                </div>
             </div>
         </div>
-        <div class="right">
-            <i class="fa-solid fa-arrow-right-arrow-left box-element-clickable" title="trocar de perfil"></i>
-            <i class="fa-solid fa-arrow-right-from-bracket box-element-clickable" title="sair"></i>
-        </div>
-    </div>
-    <!-- <div id="container-center" class="scroll-area">
-        <div class="box" style="height: 1000px;"></div>
-    </div> -->
-    <div id="container-center" class="grid scroll-area">
-        <div id="container-registry" class="box grid">
-            <div class="header">
-                <p class="title">Novo Lançamento</p>
-            </div>
-            <div class="grid-wrapper-two">
-                <div class="inp-box-with-icon">
-                    <p>Tipo</p>
-                    <i></i>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Título</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box-with-icon">
-                    <p>Data/Hora</p>
-                    <i class="fa-solid fa-circle-info box-element-clickable" title="info"></i>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box-with-icon">
-                    <p>Recorrência</p>
-                    <i class="fa-solid fa-circle-info box-element-clickable" title="info"></i>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Valor</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Método</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Descrição</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box-with-icon">
-                    <p>Categorias</p>
-                    <i class="fa-solid fa-pen box-element-clickable"></i>
-                    <input type="text" class="inp">
+        <div id="topbar" class="box">
+            <div class="left">
+                <i class="fa-regular fa-user user-icon"></i>
+                <div>
+                    <p class="userName">Iago Carvalho</p>
+                    <p id="profileNameRange">contas pessoais, 01/07/2024 - 31/07/2024</p>
                 </div>
             </div>
-            <div class="box-btns">
-                <input type="button" class="btn" value="limpar">
-                <input type="button" class="btn" value="salvar">
+            <div class="right">
+                <i class="fa-solid fa-arrow-right-arrow-left box-element-clickable" title="trocar de perfil"></i>
+                <i class="fa-solid fa-arrow-right-from-bracket box-element-clickable" title="sair"></i>
             </div>
         </div>
-        <div id="container-details" class="box grid">
-            <div class="header">
-                <div class="right">
-                    <p class="title">Detalhamento</p>
+        <div id="container-nav-reg" class="grid scroll-area">
+            <div id="container-new-reg" class="box grid">
+                <div class="header">
+                    <p class="title">Novo Lançamento</p>
                 </div>
-                <div class="left">
-                    <i class="fa-solid fa-trash box-element-clickable" title="excluir registro"></i>
+                <div class="grid-wrapper-two">
+                    <div class="inp-box-with-icon">
+                        <p>Tipo</p>
+                        <i></i>
+                        <!-- <input id="inp-new-reg-type" type="text" class="inp"> -->
+                        <select id="inp-new-reg-inout" class="inp">
+                            <option value="0">Saída</option>
+                            <option value="1">Entrada</option>
+                        </select>
+                    </div>
+                    <div class="inp-box">
+                        <p>Título</p>
+                        <input id="inp-new-reg-title" type="text" class="inp">
+                    </div>
+                    <div class="inp-box-with-icon">
+                        <p>Data/Hora</p>
+                        <i class="fa-solid fa-circle-info box-element-clickable" title="info"></i>
+                        <input type="datetime" class="inp">
+                    </div>
+                    <div class="inp-box-with-icon">
+                        <p>Recorrência</p>
+                        <i class="fa-solid fa-circle-info box-element-clickable" title="info"></i>
+                        <input type="text" class="inp">
+                    </div>
+                    <div class="inp-box">
+                        <p>Valor</p>
+                        <input id="inp-new-reg-value" type="number" min="0.01" step="0.01" class="inp">
+                    </div>
+                    <div class="inp-box">
+                        <p>Método</p>
+                        <input type="text" class="inp">
+                    </div>
+                    <div class="inp-box">
+                        <p>Descrição</p>
+                        <input id="inp-new-reg-description" type="text" class="inp">
+                    </div>
+                    <div class="inp-box-with-icon">
+                        <p>Categorias</p>
+                        <i class="fa-solid fa-pen box-element-clickable"></i>
+                        <input type="text" class="inp">
+                    </div>
+                </div>
+                <div class="box-btns">
+                    <input type="button" class="btn" id="btn-new-limpar" value="limpar">
+                    <input type="button" class="btn" id="btn-new-salvar" value="salvar">
                 </div>
             </div>
-            <div class="grid-wrapper-two">
-                <div class="inp-box">
-                    <p>Tipo</p>
-                    <input type="text" class="inp">
+            <div id="container-details" class="box grid">
+                <div class="header">
+                    <div>
+                        <p class="title">Detalhamento</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-trash box-element-clickable" title="excluir registro"></i>
+                    </div>
                 </div>
-                <div class="inp-box">
-                    <p>Título</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Data/Hora</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Valor</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>status</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Método</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Descrição</p>
-                    <input type="text" class="inp">
-                </div>
-                <div class="inp-box">
-                    <p>Categorias</p>
-                    <input type="text" class="inp">
+                <div class="grid-wrapper-two">
+                    <div class="inp-box">
+                        <p>Tipo</p>
+                        <input type="text" class="inp">
+                    </div>
+                    <div class="inp-box">
+                        <p>Título</p>
+                        <input type="text" class="inp">
+                    </div>
+                    <div class="inp-box">
+                        <p>Data/Hora</p>
+                        <input type="text" class="inp">
+                    </div>
+                    <div class="inp-box">
+                        <p>Valor</p>
+                        <input type="text" class="inp">
+                    </div>
+                    <div class="inp-box">
+                        <p>status</p>
+                        <input type="text" class="inp">
+                    </div>
+                    <div class="inp-box">
+                        <p>Método</p>
+                        <input type="text" class="inp">
+                    </div>
+                    <div class="inp-box">
+                        <p>Descrição</p>
+                        <input type="text" class="inp">
+                    </div>
+                    <div class="inp-box">
+                        <p>Categorias</p>
+                        <input type="text" class="inp">
+                    </div>
                 </div>
             </div>
-            <div class="box-btns">
-                <input type="button" class="btn" value="limpar">
-                <input type="button" class="btn" value="salvar">
+            <div id="container-regs" class="box grid">
+                <div class="header">
+                    <div>
+                        <p class="title">Lançamentos</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-circle-chevron-left box-element-clickable" title="excluir registro"></i>
+                        <span>10 a 15 de 20</span>
+                        <i class="fa-solid fa-circle-chevron-right box-element-clickable" title="excluir registro"></i>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-trash box-element-clickable" title="excluir registro"></i>
+                        <i class="fa-regular fa-eye box-element-clickable" title="excluir registro"></i>
+                        <i class="fa-solid fa-circle-plus box-element-clickable" title="excluir registro"></i>
+                        <i class="fa-solid fa-filter box-element-clickable" title="excluir registro"></i>
+                    </div>
+                </div>
+                <div class="content">
+                    <table class="table table-hover table-dark" style="border-radius: 10px;">
+                        <thead>
+                            <tr>
+                                <th scope="col"><input type="checkbox" class="form-check-input" aria-label="..."></th>
+                                <th scope="col">TÍTULO</th>
+                                <th scope="col">VALOR</th>
+                                <th scope="col">STATUS</th>
+                                <th scope="col">TIPO</th>
+                                <th scope="col">MÉTODO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" class="form-check-input" aria-label="..."></td>
+                                <td>Compra mensal</td>
+                                <td>R$ 500,00</td>
+                                <td><span class="status-stage-1">pago</span></td>
+                                <td><span class="status-stage-1">Entrada</span></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="form-check-input" aria-label="..."></td>
+                                <td>Compra mensal</td>
+                                <td>R$ 375,00</td>
+                                <td><span class="status-stage-1">pago</span></td>
+                                <td><span class="status-stage-3">Saída</span></td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 
@@ -175,9 +221,9 @@
         --fill-secondary-highlight: #555555;
         --fill-button: #535977;
         --fill-button-highlight: #8390D1;
-        --fill-pago: #6FC043;
-        --fill-pendente: #C6C148;
-        --fill-atrasado: #BC604A;
+        --fill-status-stage-1: #6FC043;
+        --fill-status-stage-2: #C6C148;
+        --fill-status-stage-3: #BC604A;
         --fill-line: #5A5A5A;
     }
 
@@ -192,6 +238,15 @@
 
     body {
         background-color: var(--fill-background);
+    }
+
+    p {
+        margin: 0;
+    }
+
+    table tr td,
+    table tr th {
+        background-color: transparent !important;
     }
 
     /* scrollbar */
@@ -212,10 +267,6 @@
         background: #555;
     }
 
-    p {
-        margin: 0;
-    }
-
     .vertical-line {
         height: 100%;
         width: 1px;
@@ -231,12 +282,22 @@
         background-color: var(--fill-line);
     }
 
+    .title {
+        font-size: var(--font-size-title);
+    }
+
+    .scroll-area {
+        overflow: auto;
+    }
+
+    /* inp */
     .inp {
         background-color: var(--fill-secondary);
         border: none;
         border-radius: var(--border-radius);
         padding: 5px;
         transition-duration: .15s;
+        color: var(--color-primary);
     }
 
     .inp:hover,
@@ -244,7 +305,8 @@
         background-color: var(--fill-secondary-highlight);
     }
 
-    .inp-box, .inp-box-with-icon {
+    .inp-box,
+    .inp-box-with-icon {
         display: grid;
         column-gap: 5px;
         align-items: center;
@@ -256,6 +318,10 @@
 
     .inp-box-with-icon {
         grid-template-columns: 90px 34px 1fr;
+    }
+
+    .inp-required {
+        outline: 2px solid #dc3545;
     }
 
     .btn {
@@ -273,35 +339,16 @@
         border-radius: var(--border-radius);
     }
 
-    .box-element-clickable {
-        padding: 8px;
-        border-radius: var(--border-radius);
-        color: var(--color-secondary);
-        transition-duration: .5s;
-    }
-
-    .box-element-clickable:hover {
-        cursor: pointer;
-        background-color: var(--fill-button-highlight);
-        color: var(--color-primary);
-    }
-
-    .box-element-clickable span {
-        margin-left: 3px;
-    }
-
     .box .header {
         display: flex;
         justify-content: space-between;
         border-bottom: 1px solid var(--fill-line);
+        padding-bottom: 5px;
     }
 
-    .scroll-area {
-        overflow: auto;
-    }
-
-    /* .scroll-area .item {
-        height: fit-content;
+    /* .box .header div {
+        display: flex;
+        align-items: center;
     } */
 
     .box .content {
@@ -317,11 +364,34 @@
         margin-left: 10px;
     }
 
-    .grid, .grid-wrapper-two {
+    .box-element-clickable {
+        padding: 8px;
+        border-radius: var(--border-radius);
+        color: var(--color-secondary);
+        transition-duration: .5s;
+    }
+
+    .box-element-clickable:hover,
+    .box-element-clickable-focus {
+        background-color: var(--fill-button-highlight);
+        color: var(--color-primary);
+    }
+
+    .box-element-clickable:hover {
+        cursor: pointer;
+    }
+
+    .box-element-clickable span {
+        margin-left: 3px;
+    }
+
+    .grid,
+    .grid-wrapper-two {
         display: grid;
         row-gap: 15px;
         column-gap: 15px;
     }
+
 
     @media screen and (min-width: 950px) {
         .grid-wrapper-two {
@@ -334,65 +404,42 @@
         }
     }
 
-    /* .content .item {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        padding:5px 0;
-    } */
-
-    .title {
-        font-size: var(--font-size-title);
-    }
-
     /* home */
     :root {
         --sidebar-width: 180px;
         --topbar-height: 80px;
     }
-    
-    body .content {
+
+    #body-content {
         height: 100vh;
         padding: 10px;
         grid-template-columns: auto 1fr;
         grid-template-rows: auto 1fr;
     }
-    
+
     #sidebar {
-        /* grid-column-start: 1;
-        grid-column-end: 1; */
         grid-row-start: 1;
         grid-row-end: 3;
-        /* height: 100%; */
-        /* width: var(--sidebar-width); */
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        /* margin-right: var(--padding-primary); */
         font-size: 11pt;
         color: var(--color-secondary);
     }
 
-    /* #topbar, #container-center {
-        grid-column-start: 2;
-        grid-column-end: 2;
-    } */
+    #sidebar .container-top .box-element-clickable {
+        margin-bottom: 10px;
+    }
+
+    #sidebar .container-bottom .box-element-clickable {
+        margin-top: 10px;
+    }
 
     #topbar {
-        /* margin-bottom: var(--padding-primary); */
-        /* height: var(--topbar-height); */
         height: min-content;
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    #topbar .container-top .box-element-clickable {
-        margin-bottom: 10px;
-    }
-
-    #topbar .container-down .box-element-clickable {
-        margin-top: 10px;
     }
 
     #topbar .right i {
@@ -419,11 +466,32 @@
         font-size: 11pt;
     }
 
-    #container-center {
-        grid-template-rows: repeat(2, min-content);
+    /* home - Registros */
+
+    #container-nav-reg {
+        grid-template-rows: repeat(3, min-content);
     }
 
-    
+    /* home - Registros - Lançamentos */
+    .status-stage-1,
+    .status-stage-2,
+    .status-stage-3 {
+        background-color: var(--fill-secondary);
+        padding: 3px 6px;
+        border-radius: var(--border-radius);
+    }
+
+    .status-stage-1 {
+        color: var(--fill-status-stage-1);
+    }
+
+    .status-stage-2 {
+        color: var(--fill-status-stage-2);
+    }
+
+    .status-stage-3 {
+        color: var(--fill-status-stage-3);
+    }
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

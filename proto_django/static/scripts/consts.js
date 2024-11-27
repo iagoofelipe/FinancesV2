@@ -24,7 +24,7 @@ export const groupFields = {
 export const navProps = {
     REGISTRIES: {
         boxNavId: 'box-reg',
-        containerId: 'container-reg'
+        containerId: 'container-nav-reg'
     },
     DASHBOARDS: {
         boxNavId: 'box-dash',

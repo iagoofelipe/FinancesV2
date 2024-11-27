@@ -61,6 +61,6 @@ body .content {
 
 /* home - reg */
 
-#container-reg {
+#container-nav-reg {
     grid-template-rows: repeat(2, min-content);
 }

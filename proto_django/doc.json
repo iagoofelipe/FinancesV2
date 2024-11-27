@@ -185,10 +185,30 @@
                     "401": {
                         "$ref": "#/components/responses/401"
                     },
+                    "405": {
+                        "$ref": "#/components/responses/405"
+                    },
                     "500": {
                         "$ref": "#/components/responses/500"
                     }
                 }
+            }
+        },
+        "/reg/data": {
+            "get": {
+                "summary": ""
+            }
+        },
+        "/reg/dataPag": {
+            "get": {
+                "summary": "Retorna versão paginada dos dados",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "índice inicial, levando em consideração o invervalo total de registros para o perfil"
+                    }
+                ]
             }
         },
         "/auth/login": {
@@ -278,6 +298,45 @@
                     }
                 }
             }
+        },
+        "/info/reg": {
+            "get": {
+                "summary": "Retorna quantitativos de registros",
+                "operationId": "getRegistriesInfo",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type":"object",
+                                    "properties": {
+                                        "registries": {
+                                            "$ref": "#/components/schemas/RegistryInfo"
+                                        },
+                                        "in": {
+                                            "$ref": "#/components/schemas/RegistryInfo"
+                                        },
+                                        "out": {
+                                            "$ref": "#/components/schemas/RegistryInfo"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "405": {
+                        "$ref": "#/components/responses/405"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -341,6 +400,19 @@
                         "items": {
                             "type": "string"
                         }
+                    }
+                }
+            },
+            "RegistryInfo": {
+                "type": "object",
+                "properties": {
+                    "qtd": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sum": {
+                        "type": "number",
+                        "format": "double"
                     }
                 }
             }

@@ -1,9 +1,17 @@
 from django.urls import path
 from django.shortcuts import render
 from django.contrib import auth
+from django.contrib.auth.models import User
 from django.http import HttpRequest, HttpResponse
 
 import src.tools as tools
+
+# def newUser(request:HttpRequest):
+#     r = tools.checkRequest(request, False, 'POST')
+#     if r is not None:
+#         return r
+
+#     User.objects.create_user()
 
 def login(request:HttpRequest):
     r = tools.checkRequest(request, False, 'POST')
