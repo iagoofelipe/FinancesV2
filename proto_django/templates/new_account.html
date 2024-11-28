@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/login.css' %}">
+{% endblock %}
+
+{% block scripts %}
+<script type="module" src="{% static 'scripts/views/new_account.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div id="container-center">
+    <p class="title">Finances</p>
+    <input type="text" class="inp" id="first-name" placeholder="primeiro nome">
+    <input type="text" class="inp" id="last-name" placeholder="último nome">
+    <input type="text" class="inp" id="username" placeholder="usuário">
+    <input type="text" class="inp" id="email" placeholder="e-mail">
+    <input type="password" class="inp" id="password" placeholder="senha">
+    <input type="password" class="inp" id="password-confirm" placeholder="digite sua senha novamente">
+    <button class="btn" id="btn-criar">criar conta</button>
+    <div class="horizontal-line"></div>
+    <label>
+        <span>já possui uma conta?</span>
+        <a href="/login">acesse agora</a>
+    </label>
+</div>
+{% endblock %}

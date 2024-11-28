@@ -86,7 +86,7 @@ p {
     background-color: var(--fill-secondary);
     border: none;
     border-radius: var(--border-radius);
-    padding: 5px;
+    padding: 5px 10px;
     transition-duration: .15s;
     color: var(--color-primary);
 }

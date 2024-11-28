@@ -299,6 +299,79 @@
                 }
             }
         },
+        "/auth/newUser": {
+            "post": {
+                "summary": "Cadastrar um novo usuário",
+                "operationId": "newUser",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/X-CSRFToken"
+                    },
+                    {
+                        "name": "fist_name",
+                        "in": "query",
+                        "description": "primeiro nome",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "query",
+                        "description": "último nome",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "nome de usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "e-mail de usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "senha do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "usuário cadastrado com sucesso"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "405": {
+                        "$ref": "#/components/responses/405"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
         "/info/reg": {
             "get": {
                 "summary": "Retorna quantitativos de registros",

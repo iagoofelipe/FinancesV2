@@ -1,1 +1,2 @@
-[] verificar porque, ao navegar entre páginas, é requisitado um novo token GET /api/token
+[ ] verificar porque, ao navegar entre páginas, é requisitado um novo token GET /api/token
+[ ] vincular novos registros ao perfil atual 

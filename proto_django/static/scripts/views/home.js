@@ -142,45 +142,4 @@ export default class HomeView {
         
         showNotification('preencha todos os campos obrigatórios!');
     }
-
-    // getNewRegData(checkRequired=true) {
-    //     let inp, val;
-    //     let any_required = false;
-    //     let data = {};
-
-    //     groupFields.NEW_REGISTRY.forEach((field, prop) => {
-    //         inp = $(`#inp-new-${field}`);
-    //         val = inp.val();
-
-    //         // verificando campos obrigatórios
-    //         if(!val && checkRequired && prop.required) {
-    //             inp.addClass('inp-required');
-    //             any_required = true;
-    //             return;
-    //         }
-
-    //         data[field] = val;
-    //     });
-
-    //     // this.#inputs_new.forEach(v => {
-    //     //     inp = $(`#inp-new-${v}`);
-    //     //     val = inp.val();
-    //     //     required = this.#inputs_new_requireds.includes(v);
-
-    //     //     // verificando campos obrigatórios
-    //     //     if(!val && checkRequired && required) {
-    //     //         inp.addClass('inp-required');
-    //     //         any_required = true;
-    //     //         return;
-    //     //     }
-            
-    //     //     data[v] = val;
-    //     // });
-        
-    //     if(any_required) {
-    //         showNotification('preencha todos os campos obrigatórios!');
-    //     }
-        
-    //     return any_required? undefined : data;
-    // }
 }

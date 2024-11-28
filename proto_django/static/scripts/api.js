@@ -29,12 +29,8 @@ export default class FinancesApi {
             await $.post(request);
         } catch (r) {
             success = false;
-            let
-                s = r.status,
-                result = (s == 200 || s == 400 || s == 405 || s == 406);
-
             showNotification(
-                result? r.responseJSON.msg : "um erro inesperado ocorreu durante a autenticação"
+                [400, 405, 406].includes(r.status)? r.responseJSON.msg : "um erro inesperado ocorreu durante a autenticação"
             );
         }
 
@@ -73,13 +69,37 @@ export default class FinancesApi {
                 });
 
         } catch (r) {
-            let s = r.status;
-
             showNotification(
-                (s == 400 || s == 401)? r.responseJSON.msg : 'um erro ocorreu durante o cadastro do novo registro'
+                ([400, 401].includes(r.status))? r.responseJSON.msg : 'um erro ocorreu durante o cadastro do novo registro'
             );
         }
 
         return { success: success, response: response }
+    }
+
+    async newUser(data) {
+        let
+            success = false,
+            request = {
+                url: '/api/auth/newUser',
+                data: data,
+                headers: {
+                    'X-CSRFToken': this.#token
+                }
+            };
+
+        try {
+            await $.post(request)
+                .done(() => {
+                    success = true;
+                });
+
+        } catch (r) {
+            showNotification(
+                ([400, 422, 405].includes(r.status))? r.responseJSON.msg : 'um erro ocorreu durante o cadastro do novo registro'
+            );
+        }
+
+        return success;
     }
 }

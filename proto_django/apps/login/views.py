@@ -6,3 +6,6 @@ def index(request:HttpRequest):
         return redirect('/home')
     
     return render(request, 'login.html')
+
+def new_account(request:HttpRequest):
+    return render(request, 'new_account.html')

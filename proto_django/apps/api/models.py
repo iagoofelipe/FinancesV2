@@ -26,3 +26,4 @@ class UserProfileRules(models.Model):
     owner = models.BooleanField(default=True)
     edit = models.BooleanField(default=True)
     read = models.BooleanField(default=True)
+    default = models.BooleanField(default=False)

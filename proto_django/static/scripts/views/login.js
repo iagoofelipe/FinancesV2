@@ -36,7 +36,7 @@ export default class LoginView {
         }
 
         $('#btn-acessar').prop('disabled', true);
-        success = await this.#api.authenticate($('#username').val(), $('#password').val());
+        success = await this.#api.authenticate(username, password);
         $('#btn-acessar').prop('disabled', false);
         
         if(success) {
